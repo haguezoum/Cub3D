@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/05 22:13:38 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:07:00 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_mlx
 	char	**map;
 	int		player_x;
 	int		player_y;
+	int		height;
+	int		weight;
 }t_mlx;
 
 
@@ -58,7 +60,7 @@ char	*ft_strjoin(char *str1, char *str2);
 char	*ft_substr(char *s, int start, size_t len);
 char	**load_map(char *file_name);
 void	drow_square(int startx ,int starty, int size, t_data img, int color);
-void	drow_player(int startx ,int starty, int size, t_data img, int color);
+void	drow_player(t_mlx mlxx, int color);
 void    drow(t_mlx *mlxx);
 void	init_param(t_mlx *mlxx,  char *file_name);
 
