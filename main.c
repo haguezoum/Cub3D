@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/06 22:25:51 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/07 09:38:30 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	click_key(int key, t_mlx *mlxx)
 	
 	if (key == 13)
 	{
-		mlxx->player_y -= 2 * sin(mlxx->angle);
 		mlxx->player_x -= 2 * cos(mlxx->angle);
+		mlxx->player_y -= 2 * sin(mlxx->angle);
 	}
 	if (key == 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/06 21:54:18 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/07 09:58:55 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	drow_player(t_mlx mlxx, int color)
 {
 	int	i = 0;
 	int j = 0;
+	int z = 1;
 	int x = mlxx.player_x - 5;
 	int y = mlxx.player_y - 5;
 		while (j < 10)
@@ -50,6 +51,12 @@ void	drow_player(t_mlx mlxx, int color)
 			i = 0;
 			j++;
 		}
+		while (z < 30)
+		{
+			my_mlx_pixel_put(&mlxx.img,x - (z * cos(mlxx.angle))  , y - (z * sin(mlxx.angle)), color);
+			z++;
+		}
+		
 } 
 void    drow(t_mlx *mlxx)
 {
