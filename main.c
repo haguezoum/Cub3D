@@ -6,18 +6,12 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/06 13:51:21 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/06 22:25:51 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void clear_pixel(int x, int y, t_data img)
-{
-    int color = 0x0ff000;  // Background color (black in this example)
-    int pixel_offset = (x * (img.bits_per_pixel / 8)) + (y * img.line_length);
-    *(unsigned int *)(img.addr + pixel_offset) = color;
-}
 
 int	click_key(int key, t_mlx *mlxx)
 {
@@ -27,14 +21,24 @@ int	click_key(int key, t_mlx *mlxx)
         mlx_destroy_window(mlxx->mlx, mlxx->mlx_win);
 		exit(0);
 	}
-	if (key == 125)
-		mlxx->player_y++;
-	if (key == 126)
-		mlxx->player_y--;
 	if (key == 124)
-		mlxx->player_x++;
+		mlxx->angle += 0.3;
+
 	if (key == 123)
-		mlxx->player_x--;	
+		mlxx->angle -= 0.3;
+	
+	if (key == 13)
+	{
+		mlxx->player_y -= 2 * sin(mlxx->angle);
+		mlxx->player_x -= 2 * cos(mlxx->angle);
+	}
+	if (key == 1)
+	{
+		mlxx->player_y += sin(mlxx->angle);
+		mlxx->player_x += cos(mlxx->angle );
+	}
+	
+		
 	printf("%d \n",key);
 			mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx-> weight, mlxx->height);
 			mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel, &mlxx->img.line_length,
@@ -71,6 +75,7 @@ void init_param(t_mlx *mlxx,  char *file_name)
 	int fd = open(file_name, O_RDONLY, 0);
 	mlxx->height = 1;
 	mlxx->weight = 0;
+	mlxx->angle = 1.5708;
 
 	mlxx->weight = ft_strlen(get_next_line(fd, 1)) - 1;
 	while (get_next_line(fd, 1))

@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/06 12:07:00 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:27:09 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ typedef struct s_mlx
 	void	*mlx_win;
 	t_data	img;
 	char	**map;
-	int		player_x;
-	int		player_y;
+	float	player_x;
+	float	player_y;
+	double	angle;
 	int		height;
 	int		weight;
 }t_mlx;

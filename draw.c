@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/06 12:57:50 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/06 21:54:18 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void    drow(t_mlx *mlxx)
 				drow_square (j,i,40 ,mlxx->img, 0xffffff);
 			if (mlxx->map[i][j] == 'p')
 				drow_player (*mlxx, 0xff0000);
+
+			
 			j++;
 		}
 		j = 0;
