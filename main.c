@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/08 17:25:16 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/08 22:11:09 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void init_param(t_mlx *mlxx,  char *file_name)
 	player_int(mlxx);
 
 	mlxx->mlx = mlx_init();
-	mlxx->mlx_win = mlx_new_window(mlxx->mlx, mlxx->weight, mlxx->height, "abdel-ou");
+	mlxx->mlx_win = mlx_new_window(mlxx->mlx, mlxx->weight, mlxx->height, "cube3d");
 	mlxx->img.img = mlx_new_image(mlxx->mlx,mlxx-> weight, mlxx->height);
 	mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel, &mlxx->img.line_length,
 			&mlxx->img.endian);

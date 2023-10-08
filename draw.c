@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/08 16:57:41 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/08 22:10:52 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int    drow(void *param)
 	t_mlx *mlxx = param;
     i = 0;
     j = 0;
-	while (mlxx->map[i + 1])
+	while (mlxx->map[i])
 	{
 		while (mlxx->map[i][j])
 		{
@@ -101,8 +101,8 @@ int    drow(void *param)
 		}
 		j = 0;
 		i++;
-
 	}	
+	drow_grid(mlxx);
 	mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
 	return 0;
 }
