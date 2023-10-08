@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/08 11:30:04 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:25:16 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void init_param(t_mlx *mlxx,  char *file_name)
 	int fd = open(file_name, O_RDONLY, 0);
 	mlxx->height = 1;
 	mlxx->weight = 0;
-	mlxx->angle = 90 * (3.14 / 180);
+	mlxx->angle = 90 * (M_PI / 180);
 
 	mlxx->weight = ft_strlen(get_next_line(fd, 1)) - 1;
 	while (get_next_line(fd, 1))
@@ -64,9 +64,7 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 		init_param(&mlxx, argv[1]);
-
-	drow(&mlxx);
-	mlx_put_image_to_window(mlxx.mlx, mlxx.mlx_win, mlxx.img.img, 0, 0);
+	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 	mlx_hook(mlxx.mlx_win,2,0, click_key, &mlxx);
 	mlx_loop(mlxx.mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/08 10:09:13 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:30:04 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,28 @@ int vurtual_move(int key, t_mlx *mlxx)
 	tmp_y = mlxx->player_y;
 	tmp_angle = mlxx->angle;
 	if (key == 124)
-		tmp_angle += 0.3;
+		tmp_angle += 0.4;
 	if (key == 123)
-		tmp_angle -= 0.3;
+		tmp_angle -= 0.4;
 	if (key == 13)
 	{
-		tmp_x -= 3 * cos(tmp_angle);
-		tmp_y -= 3 * sin(tmp_angle);
+		tmp_x -= 7 * cos(tmp_angle);
+		tmp_y -= 7 * sin(tmp_angle);
 	}
 	if (key == 1)
 	{
-		tmp_x += cos(tmp_angle);
-		tmp_y += sin(tmp_angle);
+		tmp_x +=7 * cos(tmp_angle);
+		tmp_y +=7 * sin(tmp_angle);
+	}
+		if (key == 0)
+	{
+		tmp_x -= 7 * cos(tmp_angle -  1.5708);
+		tmp_y -= 7 * sin(tmp_angle - 1.5708);
+	}
+		if (key == 2)
+	{
+		tmp_x -= 7 * cos(tmp_angle +  1.5708);
+		tmp_y -= 7 * sin(tmp_angle + 1.5708);
 	}
 	if (mlxx->map[(int)tmp_y / 40][(int)tmp_x / 40] == '1')
 		return (0);
@@ -56,21 +66,31 @@ int	click_key(int key, t_mlx *mlxx)
 	if (vurtual_move(key, mlxx) == 1)
 	{
 		if (key == 124)
-		mlxx->angle += 0.3;
+		mlxx->angle += 0.4;
 	if (key == 123)
-		mlxx->angle -= 0.3;
+		mlxx->angle -= 0.4;
 	if (key == 13)
 	{
-		mlxx->player_x -= 3 * cos(mlxx->angle);
-		mlxx->player_y -= 3 * sin(mlxx->angle);
+		mlxx->player_x -= 7 * cos(mlxx->angle);
+		mlxx->player_y -= 7 * sin(mlxx->angle);
+	}
+	if (key == 0)
+	{
+		mlxx->player_x -= 7 * cos(mlxx->angle -  1.5708);
+		mlxx->player_y -= 7 * sin(mlxx->angle - 1.5708);
+	}
+		if (key == 2)
+	{
+		mlxx->player_x -= 7 * cos(mlxx->angle +  1.5708);
+		mlxx->player_y -= 7 * sin(mlxx->angle + 1.5708);
 	}
 	if (key == 1)
 	{
-		mlxx->player_x += cos(mlxx->angle );
-		mlxx->player_y += sin(mlxx->angle);
+		mlxx->player_x += 7 * cos(mlxx->angle );
+		mlxx->player_y += 7 * sin(mlxx->angle);
 	}
 	mlx_destroy_image(mlxx->mlx, mlxx->img.img);	
-	printf("%d \n",((int)mlxx->player_y) / 40);
+	printf("%d \n",key);
 			mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx-> weight, mlxx->height);
 			mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel, &mlxx->img.line_length,
 				&mlxx->img.endian);

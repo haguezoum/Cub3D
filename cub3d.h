@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/08 11:29:05 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/08 16:50:04 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ char	*ft_substr(char *s, int start, size_t len);
 char	**load_map(char *file_name);
 void	drow_square(int startx ,int starty, int size, t_data img, int color);
 void	drow_player(t_mlx mlxx, int color);
-void    drow(t_mlx *mlxx);
+int    drow(void *param);
+
 void	init_param(t_mlx *mlxx,  char *file_name);
 int	click_key(int key, t_mlx *mlxx);
 
