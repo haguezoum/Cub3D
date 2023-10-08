@@ -6,47 +6,12 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/07 09:38:30 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/08 11:30:04 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-int	click_key(int key, t_mlx *mlxx)
-{
-	if (key == 53)
-	{
-        mlx_destroy_image(mlxx->mlx, mlxx->img.img);
-        mlx_destroy_window(mlxx->mlx, mlxx->mlx_win);
-		exit(0);
-	}
-	if (key == 124)
-		mlxx->angle += 0.3;
-
-	if (key == 123)
-		mlxx->angle -= 0.3;
-	
-	if (key == 13)
-	{
-		mlxx->player_x -= 2 * cos(mlxx->angle);
-		mlxx->player_y -= 2 * sin(mlxx->angle);
-	}
-	if (key == 1)
-	{
-		mlxx->player_y += sin(mlxx->angle);
-		mlxx->player_x += cos(mlxx->angle );
-	}
-	
-		
-	printf("%d \n",key);
-			mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx-> weight, mlxx->height);
-			mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel, &mlxx->img.line_length,
-				&mlxx->img.endian);
-			drow(mlxx);
-		mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
-	return (0);
-}
 void player_int(t_mlx *mlxx)
 {
 	int	i;
@@ -75,7 +40,7 @@ void init_param(t_mlx *mlxx,  char *file_name)
 	int fd = open(file_name, O_RDONLY, 0);
 	mlxx->height = 1;
 	mlxx->weight = 0;
-	mlxx->angle = 1.5708;
+	mlxx->angle = 90 * (3.14 / 180);
 
 	mlxx->weight = ft_strlen(get_next_line(fd, 1)) - 1;
 	while (get_next_line(fd, 1))
