@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:56:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/10 20:02:31 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/10 22:34:58 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,19 @@ void horizontal_ray(t_mlx *mlxx)
     // t_data img;
     int y_intercept;
     int x_intercept;
-    // int x_step;
-    // img = ;
+    int x_step;
+    
     y_intercept = (int)(mlxx->player_y / 40) * 40;
     x_intercept = mlxx->player_x + (y_intercept - mlxx->player_y) / tan(mlxx->angle);
-    // x_step = 40 / tan(mlxx->angle);
+    x_step = 40 / tan(M_PI - mlxx->angle);
+	x_intercept += x_step;
+	y_intercept -= 40;
 	// draw_line(10, 10, 400, 100, mlxx->img, 0x00ff00);
 	if (!(mlxx->angle >= 0 && mlxx->angle < M_PI))
 	{
 		x_intercept = mlxx->player_x + (y_intercept - mlxx->player_y) / tan(M_PI - mlxx->angle);
 		y_intercept += 40;
+		y_intercept += 80;
 	}
 	// drow_rays(mlxx, mlxx->angle, 0x00ff);
 
