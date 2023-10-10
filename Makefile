@@ -6,7 +6,7 @@
 #    By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 18:10:05 by abdel-ou          #+#    #+#              #
-#    Updated: 2023/10/08 21:54:23 by abdel-ou         ###   ########.fr        #
+#    Updated: 2023/10/09 09:53:54 by abdel-ou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME=cub3d
 FRAEMWORKS=-L /usr/lib -lmlx -framework OpenGL -framework AppKit
 FLAGS=-Werror -Wextra -Wall -O3
 
-SRC=main.c drow_line.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c load_map.c draw.c key_hook.c grid_drow.c
+SRC=main.c drow_line.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c load_map.c draw.c key_hook.c grid_drow.c horizontal_rays.c 
 
 
 INCLUDES=-I /usr/include

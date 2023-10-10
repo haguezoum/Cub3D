@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/08 22:36:46 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:19:35 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int vurtual_move(int key, t_mlx *mlxx)
 	tmp_y = mlxx->player_y;
 	tmp_angle = mlxx->angle;
 	if (key == 124)
-		tmp_angle += 0.4;
+		tmp_angle += 0.015;
 	if (key == 123)
-		tmp_angle -= 0.4;
+		tmp_angle -= 0.015;;
 	if (key == 13)
 	{
 		tmp_x -= 7 * cos(tmp_angle);
@@ -55,8 +55,7 @@ int vurtual_move(int key, t_mlx *mlxx)
 
 int	click_key(int key, t_mlx *mlxx)
 {
-	// float tmp_x = mlxx->player_x;
-	// float tmp_y = mlxx->player_y;
+	
 	if (key == 53)
 	{
         mlx_destroy_image(mlxx->mlx, mlxx->img.img);
@@ -66,9 +65,9 @@ int	click_key(int key, t_mlx *mlxx)
 	if (vurtual_move(key, mlxx) == 1)
 	{
 		if (key == 124)
-		mlxx->angle += 0.4;
+			mlxx->angle += 0.015;;
 	if (key == 123)
-		mlxx->angle -= 0.4;
+		mlxx->angle -= 0.015;;
 	if (key == 13)
 	{
 		mlxx->player_x -= 7 * cos(mlxx->angle);
@@ -89,6 +88,14 @@ int	click_key(int key, t_mlx *mlxx)
 		mlxx->player_x += 7 * cos(mlxx->angle );
 		mlxx->player_y += 7 * sin(mlxx->angle);
 	}
+	if (mlxx->angle < 0)
+		mlxx->angle += 2 * M_PI;
+	if (mlxx->angle > 2 * M_PI)
+		mlxx->angle -= 2 * M_PI;
+	
+
+	
+	// printf("%f \n",mlxx->angle);
 	mlx_destroy_image(mlxx->mlx, mlxx->img.img);	
 	printf("%d \n",key);
 			mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx-> weight, mlxx->height);
@@ -97,7 +104,5 @@ int	click_key(int key, t_mlx *mlxx)
 			drow(mlxx);
 		mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
 	}
-	
-	
 	return (0);
 }

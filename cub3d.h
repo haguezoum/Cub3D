@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/08 22:09:21 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:21:05 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_mlx
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 char	**memory_allocete(char *file_name);
-void	draw_line(t_point p1, t_point p2, t_data img, int color);
+void	draw_line(int p1_x, int p1_y, int p2_x, int p2_y, t_data img, int color);
 char	*get_next_line(int fd, int buffers);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *str);
@@ -67,7 +67,7 @@ int    drow(void *param);
 void	init_param(t_mlx *mlxx,  char *file_name);
 int	click_key(int key, t_mlx *mlxx);
 
-
+void horizontal_ray(t_mlx *mlxx);
 
 // just for test or visualisation the grid
 void drow_grid(t_mlx *mlxx);
