@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/10 16:44:05 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:19:14 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void draw_line(int x0, int y0,int x1, int y1, t_data img, int color)
     double y = y0;
 
     int i = 0;
-    while (i <= steps)
+    while (i <= steps )
     {
          my_mlx_pixel_put(&img, round(x),round(y), color);
         x += x_increment;
