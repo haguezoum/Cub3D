@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:56:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/11 15:28:09 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:41:51 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void horizontal_ray(t_mlx *mlxx)
         }
     }
 
-    draw_line(mlxx->player_x, mlxx->player_y, x_intercept, y_intercept, mlxx->img, 0x00ff00);
+    // draw_line(mlxx->player_x, mlxx->player_y, x_intercept, y_intercept, mlxx->img, 0x00ff00);
 	// drow_rays(mlxx, mlxx->angle, 0xff0000);
 
     printf("x_intercept = %d || y_intercept = %d || angle = %f \n", x_intercept, y_intercept, mlxx->angle * (180 / M_PI));

@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/10 20:19:35 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:51:38 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	click_key(int key, t_mlx *mlxx)
 			mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel, &mlxx->img.line_length,
 				&mlxx->img.endian);
 			drow(mlxx);
-		mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
+		// mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
 	}
 	return (0);
 }

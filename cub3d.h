@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/11 11:19:20 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:37:40 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	init_param(t_mlx *mlxx,  char *file_name);
 int	click_key(int key, t_mlx *mlxx);
 
 void horizontal_ray(t_mlx *mlxx);
+void vertical_ray(t_mlx *mlxx);
+void drow_rays(t_mlx *mlxx, double angle, int color);
 
 // just for test or visualisation the grid
 void drow_grid(t_mlx *mlxx);
