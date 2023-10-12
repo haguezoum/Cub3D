@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/12 12:51:38 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:20:58 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	click_key(int key, t_mlx *mlxx)
 	
 	// printf("%f \n",mlxx->angle);
 	mlx_destroy_image(mlxx->mlx, mlxx->img.img);	
-	printf("%d \n",key);
+	// printf("%d \n",key);
 			mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx-> weight, mlxx->height);
 			mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel, &mlxx->img.line_length,
 				&mlxx->img.endian);

@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:56:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/12 11:41:51 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:05:49 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,7 @@ void horizontal_ray(t_mlx *mlxx)
            y_intercept >= 0 && y_intercept < mlxx->height * 40)
     {
         if (mlxx->map[(int)(y_intercept / 40)][(int)(x_intercept / 40)] == '1' || mlxx->map[(int)(y_intercept / 40) - 1][(int)(x_intercept / 40)] == '1')
-        {
             break;
-        }
 
         if (mlxx->angle >= 0 && mlxx->angle < M_PI)
         {
@@ -70,9 +68,8 @@ void horizontal_ray(t_mlx *mlxx)
             y_intercept += 40;
         }
     }
+    if (x_intercept <= 0 || x_intercept >= mlxx->weight || y_intercept <= 0 || y_intercept >= mlxx->height)
+        return;
 
-    // draw_line(mlxx->player_x, mlxx->player_y, x_intercept, y_intercept, mlxx->img, 0x00ff00);
-	// drow_rays(mlxx, mlxx->angle, 0xff0000);
-
-    printf("x_intercept = %d || y_intercept = %d || angle = %f \n", x_intercept, y_intercept, mlxx->angle * (180 / M_PI));
+    draw_line(mlxx->player_x, mlxx->player_y, x_intercept, y_intercept, mlxx->img, 0x00ff00);
 }

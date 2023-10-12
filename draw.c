@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/12 11:43:56 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:05:53 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	drow_player(t_mlx mlxx, int color)
 {	
 		my_mlx_pixel_put(&mlxx.img ,mlxx.player_x ,mlxx.player_y ,color);
 			// drow_rays(&mlxx, angle, 0x00ff00);
-			// horizontal_ray(&mlxx);
+			horizontal_ray(&mlxx);
 			vertical_ray(&mlxx);
 
 			

@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:28:34 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/12 12:47:04 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:20:34 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,25 @@ void vertical_ray(t_mlx *mlxx)
 		y_intercept = mlxx->player_y + (x_intercept - mlxx->player_x) * tan(mlxx->angle);
 	}
   
-    if (mlxx->angle >= M_PI_2 && mlxx->angle < 3 * M_PI_2)
+   while (x_intercept >= 0 && x_intercept < mlxx->weight &&
+           y_intercept >= 0 && y_intercept < mlxx->height)
+  {
+     if (mlxx->map[(int)(y_intercept / 40)][(int)(x_intercept / 40)] == '1' || mlxx->map[(int)(y_intercept / 40) ][(int)(x_intercept / 40) - 1] == '1')
+        {
+            break;
+        }
+   if (mlxx->angle >= M_PI_2 && mlxx->angle < 3 * M_PI_2)
     {
         x_intercept += 40;
         y_intercept += y_step;
     }else
     {
-       x_intercept -= 40;
+        x_intercept -= 40;
         y_intercept -= y_step; 
     }
-    
-    if (x_intercept < 0 || x_intercept > mlxx->weight || y_intercept < 0 || y_intercept > mlxx->height)
-        return ;
-    
-    draw_line(mlxx->player_x, mlxx->player_y, x_intercept, y_intercept, mlxx->img, 0x00ff00);
-     printf("x_intercept = %d || y_intercept = %d || angle = %f \n", x_intercept, y_intercept, mlxx->angle * (180 / M_PI));
+  }
+  if (x_intercept <= 0 || x_intercept >= mlxx->weight || y_intercept <= 0 || y_intercept >= mlxx->height)
+    return;
+    draw_line(mlxx->player_x, mlxx->player_y, x_intercept, y_intercept, mlxx->img, 0xff0000);
+    //  printf("x_intercept = %d || y_intercept = %d || angle = %f \n", x_intercept, y_intercept, mlxx->angle * (180 / M_PI));
 }   

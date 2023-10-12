@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/12 12:36:41 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:59:25 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void init_param(t_mlx *mlxx,  char *file_name)
 	int fd = open(file_name, O_RDONLY, 0);
 	mlxx->height = 1;
 	mlxx->weight = 0;
-	mlxx->angle = 180 * (M_PI / 180);
+	mlxx->angle = 90 * (M_PI / 180);
 
 	mlxx->weight = ft_strlen(get_next_line(fd, 1)) - 1;
 	while (get_next_line(fd, 1))
