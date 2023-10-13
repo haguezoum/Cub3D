@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/12 16:20:58 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/13 08:40:19 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int vurtual_move(int key, t_mlx *mlxx)
 	tmp_y = mlxx->player_y;
 	tmp_angle = mlxx->angle;
 	if (key == 124)
-		tmp_angle += 0.015;
+		tmp_angle += 0.07;
 	if (key == 123)
-		tmp_angle -= 0.015;;
+		tmp_angle -= 0.07;
 	if (key == 13)
 	{
 		tmp_x -= 7 * cos(tmp_angle);
@@ -65,9 +65,9 @@ int	click_key(int key, t_mlx *mlxx)
 	if (vurtual_move(key, mlxx) == 1)
 	{
 		if (key == 124)
-			mlxx->angle += 0.015;;
+			mlxx->angle += 0.07;
 	if (key == 123)
-		mlxx->angle -= 0.015;;
+		mlxx->angle -= 0.07;
 	if (key == 13)
 	{
 		mlxx->player_x -= 7 * cos(mlxx->angle);
@@ -88,7 +88,7 @@ int	click_key(int key, t_mlx *mlxx)
 		mlxx->player_x += 7 * cos(mlxx->angle );
 		mlxx->player_y += 7 * sin(mlxx->angle);
 	}
-	if (mlxx->angle < 0)
+	if (mlxx->angle <= 0)
 		mlxx->angle += 2 * M_PI;
 	if (mlxx->angle > 2 * M_PI)
 		mlxx->angle -= 2 * M_PI;

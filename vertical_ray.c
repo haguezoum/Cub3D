@@ -6,28 +6,29 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:28:34 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/12 16:20:34 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:23:36 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void vertical_ray(t_mlx *mlxx)
+t_point vertical_ray(t_mlx *mlxx, double angle)
 {
     int	x_intercept;
     int	y_intercept;
-    int	y_step; 
+    int	y_step;
+    t_point v_point;
 
-    y_step = tan(mlxx->angle) * 40;
-	if (mlxx->angle >= M_PI_2 && mlxx->angle < 3 * M_PI_2)
+    y_step = tan(angle) * 40;
+	if (angle >= M_PI_2 && angle < 3 * M_PI_2)
 	{
 		x_intercept = (int)((mlxx->player_x / 40) + 1) * 40;
-		y_intercept = mlxx->player_y + (x_intercept - mlxx->player_x) * tan(mlxx->angle);
+		y_intercept = mlxx->player_y + (x_intercept - mlxx->player_x) * tan(angle);
 	}
 	else
 	{
 		x_intercept = (int)((mlxx->player_x / 40)) * 40;
-		y_intercept = mlxx->player_y + (x_intercept - mlxx->player_x) * tan(mlxx->angle);
+		y_intercept = mlxx->player_y + (x_intercept - mlxx->player_x) * tan(angle);
 	}
   
    while (x_intercept >= 0 && x_intercept < mlxx->weight &&
@@ -37,7 +38,7 @@ void vertical_ray(t_mlx *mlxx)
         {
             break;
         }
-   if (mlxx->angle >= M_PI_2 && mlxx->angle < 3 * M_PI_2)
+   if (angle >= M_PI_2 && angle < 3 * M_PI_2)
     {
         x_intercept += 40;
         y_intercept += y_step;
@@ -48,7 +49,14 @@ void vertical_ray(t_mlx *mlxx)
     }
   }
   if (x_intercept <= 0 || x_intercept >= mlxx->weight || y_intercept <= 0 || y_intercept >= mlxx->height)
-    return;
-    draw_line(mlxx->player_x, mlxx->player_y, x_intercept, y_intercept, mlxx->img, 0xff0000);
+  {
+      v_point.x = 10000;
+      v_point.y = 10000;
+      return (v_point);
+}
+    v_point.x = x_intercept;
+    v_point.y = y_intercept;
+    // draw_line(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y, mlxx->img, 0xff0000);
+    return (v_point);
     //  printf("x_intercept = %d || y_intercept = %d || angle = %f \n", x_intercept, y_intercept, mlxx->angle * (180 / M_PI));
 }   

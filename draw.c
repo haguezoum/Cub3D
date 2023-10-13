@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/12 15:05:53 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:06:31 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,21 @@ void	drow_square(int startx ,int starty, int size, t_data img, int color)
 
 void	drow_player(t_mlx mlxx, int color)
 {	
+	double i = -30;
+	double	angle = mlxx.angle;
 		my_mlx_pixel_put(&mlxx.img ,mlxx.player_x ,mlxx.player_y ,color);
-			// drow_rays(&mlxx, angle, 0x00ff00);
-			horizontal_ray(&mlxx);
-			vertical_ray(&mlxx);
-
 			
+			while (i < 30)
+			{
+				double x = angle + i * (M_PI / 180);
+				if (x <= 0)
+					x += 2 * M_PI;
+				if (x > 2 * M_PI)
+					x -= 2 * M_PI;
+				scan(&mlxx, x,0xff0000);
+				i += 0.0085;
+			}
+			// printf("angle = %f\n", angle * (180 / M_PI));		
 } 
 int    drow(void *param)
 {
@@ -58,14 +67,14 @@ int    drow(void *param)
 		{
 			if (mlxx->map[i][j] == '1')
 				drow_square (j,i,40 ,mlxx->img, 0xffffff);
-			if (mlxx->map[i][j] == 'p')
-				drow_player (*mlxx, 0xff0000);
+			
 			j++;
 		}
 		j = 0;
 		i++;
 	}	
 	drow_grid(mlxx);
+		drow_player (*mlxx, 0xff0000);
 	mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
 	return 0;
 }
