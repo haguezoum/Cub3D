@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:56:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/13 10:21:43 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/13 13:21:03 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void drow_rays(t_mlx *mlxx, double angle, int color)
 {
-	int x;
-	int y;
-	int z;
-	int xx;
-	int yy;
+    int x = mlxx->player_x;
+    int y = mlxx->player_y;
+    int z = 1;
+    int xx, yy;
 
-	x = mlxx->player_x;
-	y = mlxx->player_y;
-	z = 1;
-	xx = x - (z * cos(angle));
-	yy = y - (z * sin(angle));
-	while (z < 100)
-	{
-		xx = x - (z * cos(angle));
-		yy = y - (z * sin(angle));
-		my_mlx_pixel_put(&mlxx->img,xx  , yy, color);
-		z++;
-	}
+    while (z < 100)
+    {
+        xx = x - (z * cos(angle));
+        yy = y - (z * sin(angle));
+        
+        // Check for collision with obstacles in your environment
+        if (mlxx->map[(int)(yy / 40)][(int)(xx / 40)] == '1') {
+            break; // Exit the loop when hitting an obstacle
+        }
+
+        my_mlx_pixel_put(&mlxx->img, xx, yy, color);
+        z++;
+    }
 }
 t_point horizontal_ray(t_mlx *mlxx, double angle)
 {

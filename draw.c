@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/13 10:06:31 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:01:07 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	drow_player(t_mlx mlxx, int color)
 {	
 	double i = -30;
 	double	angle = mlxx.angle;
+	double z = M_PI / 3;
 		my_mlx_pixel_put(&mlxx.img ,mlxx.player_x ,mlxx.player_y ,color);
 			
 			while (i < 30)
@@ -48,7 +49,7 @@ void	drow_player(t_mlx mlxx, int color)
 				if (x > 2 * M_PI)
 					x -= 2 * M_PI;
 				scan(&mlxx, x,0xff0000);
-				i += 0.0085;
+				i += z;
 			}
 			// printf("angle = %f\n", angle * (180 / M_PI));		
 } 

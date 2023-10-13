@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/13 07:09:32 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/13 13:26:33 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_point
 {
 	float	x;
 	float	y;
-	int		pos;
 }t_point;
 
 typedef struct s_mlx

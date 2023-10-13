@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:07:06 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/13 10:23:58 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/13 13:16:52 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ float distance(int x1, int y1, int x2, int y2)
     float y;
     float z;
     
-    x = x1 - x2;
-    y = y1 - y2;
+    x = x2 - x1;
+    y = y2 - y2;
     z = sqrt((x * x) + (y * y));
     return (z);
 }
