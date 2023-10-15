@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/15 13:55:11 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/15 16:15:36 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void scan(t_mlx *mlxx, double angle, int color, int i)
     t_point h_point = horizontal_ray(mlxx, angle);
     t_point v_point = vertical_ray(mlxx, angle);
     t_point point;
-   
+   	double new_dest;
 
     if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y) <=
          distance(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y))
@@ -87,14 +87,20 @@ void scan(t_mlx *mlxx, double angle, int color, int i)
         point.y = v_point.y;
     }
 	int distaproj = (mlxx->weight / 2) / tan(M_PI / 6);
-	int wall_h = (40 / distance(mlxx->player_x, mlxx->player_y, point.x, point.y)) * distaproj;
+	double dist = distance(mlxx->player_x, mlxx->player_y, point.x, point.y);
+	
+	if (mlxx->angle > angle)
+		new_dest = dist * cos(mlxx->angle - angle);
+	else
+		new_dest = dist * cos(angle - mlxx->angle);
+	
+	int wall_h = (40 / new_dest) * distaproj;
 	if (wall_h > mlxx->height)
 	{
 		wall_h = mlxx->height;
 	}
 	draw_line(i, 0 , i, (mlxx->height / 2) , mlxx->img, 0x6fa8dc);
 	draw_line(i,(mlxx->height / 2) , i, mlxx->height , mlxx->img, 0x999999);
-   
     draw_line(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, color);
 
 	
