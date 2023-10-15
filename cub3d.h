@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/14 12:47:21 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:47:05 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_point
 {
 	float	x;
 	float	y;
-	int		pos;
+	int		color;
 }t_point;
 
 typedef struct s_mlx
@@ -52,7 +52,6 @@ typedef struct s_mlx
 	int		weight;
 }t_mlx;
 
-
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 char	**memory_allocete(char *file_name);
 void	draw_line(int p1_x, int p1_y, int p2_x, int p2_y, t_data img, int color);
@@ -63,19 +62,20 @@ int		check_new_line(char *str);
 char	*ft_strjoin(char *str1, char *str2);
 char	*ft_substr(char *s, int start, size_t len);
 char	**load_map(char *file_name);
-void	drow_square(int startx ,int starty, int size, t_data img, int color);
-void	drow_player(t_mlx mlxx, int color);
-int    drow(void *param);
+void	drow_square(int startx, int starty, t_data img, int color);
+void	drow_player(t_mlx mlxx);
+int		drow(void *param);
 
-void	init_param(t_mlx *mlxx,  char *file_name);
-int	click_key(int key, t_mlx *mlxx);
+void	init_param(t_mlx *mlxx, char *file_name);
+int		click_key(int key, t_mlx *mlxx);
 
-t_point horizontal_ray(t_mlx *mlxx, double angle);
-t_point vertical_ray(t_mlx *mlxx, double angle);
-void drow_rays(t_mlx *mlxx, double angle, int color);
-void scan(t_mlx *mlxx, double angle, int color, int i);
+t_point	horizontal_ray(t_mlx *mlxx, double angle);
+t_point	vertical_ray(t_mlx *mlxx, double angle);
+void	drow_rays(t_mlx *mlxx, double angle, int color);
+void	scan(t_mlx *mlxx, double angle, int i);
+void	drow_mini_map(t_mlx *mlxx);
 
 // just for test or visualisation the grid
-void drow_grid(t_mlx *mlxx);
+void	drow_grid(t_mlx *mlxx);
 
 #endif

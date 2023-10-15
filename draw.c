@@ -6,55 +6,13 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/15 16:15:36 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:46:30 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void drow_rays(t_mlx *mlxx, double angle, int color)
-{
-    int x = mlxx->player_x / 4;
-    int y = mlxx->player_y / 4;
-    int z = 1;
-    int xx, yy;
 
-    while (z < 50)
-    {
-        xx = x - (z * cos(angle));
-        yy = y - (z * sin(angle));
-        
-        // Check for collision with obstacles in your environment
-        if (mlxx->map[(int)(yy / 10)][(int)(xx / 10)] == '1') {
-            break; // Exit the loop when hitting an obstacle
-        }
-
-        my_mlx_pixel_put(&mlxx->img, xx, yy, color);
-        z++;
-    }
-}
-
-void	drow_square(int startx ,int starty, int size, t_data img, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	startx = startx * size;
-	starty = starty * size;
-	while (j < size)
-	{
-		while (i < size)
-		{
-			my_mlx_pixel_put(&img,startx + i, starty + j, color);
-			i++;
-		}
-		i = 0;
-		j++;
-	}
-	
-}
 
 float distance(int x1, int y1, int x2, int y2)
 {
@@ -68,23 +26,25 @@ float distance(int x1, int y1, int x2, int y2)
     return (z);
 }
 
-void scan(t_mlx *mlxx, double angle, int color, int i)
+void scan(t_mlx *mlxx, double angle, int i)
 {
     t_point h_point = horizontal_ray(mlxx, angle);
     t_point v_point = vertical_ray(mlxx, angle);
     t_point point;
    	double new_dest;
 
-    if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y) <=
+    if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y) <
          distance(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y))
     {
         point.x = h_point.x;
         point.y = h_point.y;
+		point.color = 0xa2add0;
     }
     else
     {
         point.x = v_point.x;
         point.y = v_point.y;
+		point.color = 0x02e0d9;
     }
 	int distaproj = (mlxx->weight / 2) / tan(M_PI / 6);
 	double dist = distance(mlxx->player_x, mlxx->player_y, point.x, point.y);
@@ -101,15 +61,13 @@ void scan(t_mlx *mlxx, double angle, int color, int i)
 	}
 	draw_line(i, 0 , i, (mlxx->height / 2) , mlxx->img, 0x6fa8dc);
 	draw_line(i,(mlxx->height / 2) , i, mlxx->height , mlxx->img, 0x999999);
-    draw_line(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, color);
-
 	
+    draw_line(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, point.color);
 }
 
-void	drow_player(t_mlx mlxx, int color)
+void	drow_player(t_mlx mlxx)
 {	
-	
-		double	angle = mlxx.angle - (M_PI / 6);
+	double	angle = mlxx.angle - (M_PI / 6);
 	double inc = (M_PI / 3) / mlxx.weight;
 	double send_angle = angle;
 	int i = 0;
@@ -120,43 +78,24 @@ void	drow_player(t_mlx mlxx, int color)
 			send_angle = send_angle - (2 * M_PI);
 		else if (send_angle < 0)
 			send_angle = send_angle + (2 * M_PI);
-		scan(&mlxx, send_angle, color, i);
+		scan(&mlxx, send_angle, i);
 		angle += inc;
 		send_angle = angle;
 		i++;
 	}
-	// printf("index = %d\n", index);
+}
 
 
-} 
 int    drow(void *param)
 {
-    int	i;
-    int	j;
 	t_mlx *mlxx;
 
 	mlxx = (t_mlx *)param;
-    i = 0;
-    j = 0;
-	drow_player (*mlxx, 0xe06666);
-	while (mlxx->map[i])
-	{
-		while (mlxx->map[i][j])
-		{
-			if (mlxx->map[i][j] == '1')
-			{
-				drow_square (j,i,10 ,mlxx->img, 0xffffff);
-			}
-				
-			j++;
-		}
-		j = 0;
-		i++;
-	}	
+
+	drow_player (*mlxx);
+	drow_mini_map(mlxx);
 	// drow_grid(mlxx);
-	my_mlx_pixel_put(&mlxx->img, mlxx->player_x / 4, mlxx->player_y / 4, 0x00ff00);
-	drow_rays(mlxx, mlxx->angle, 0x00ff00);
-		
+
 	mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
 	return 0;
 }
