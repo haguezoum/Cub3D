@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/13 18:19:23 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:45:33 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void scan(t_mlx *mlxx, double angle, int color)
     t_point point;
     
 
-    if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y) <=
-         distance(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y))
+    if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y) - distance(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y) < 0.001)
     {
         point.x = h_point.x;
         point.y = h_point.y;
@@ -62,7 +61,6 @@ void	drow_square(int startx ,int starty, int size, t_data img, int color)
 		i = 0;
 		j++;
 	}
-	
 }
 
 void	drow_player(t_mlx mlxx, int color)
@@ -81,8 +79,7 @@ void	drow_player(t_mlx mlxx, int color)
 					x -= 2 * M_PI;
 				scan(&mlxx, x,0xff0000);
 				i += z;
-			}
-			// printf("angle = %f\n", angle * (180 / M_PI));		
+			}		
 } 
 int    drow(void *param)
 {

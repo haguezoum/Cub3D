@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:28:34 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/13 10:23:36 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:55:58 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_point vertical_ray(t_mlx *mlxx, double angle)
 {
-    int	x_intercept;
-    int	y_intercept;
-    int	y_step;
+    double	x_intercept;
+    double	y_intercept;
+    double	y_step;
     t_point v_point;
 
     y_step = tan(angle) * 40;
@@ -30,6 +30,8 @@ t_point vertical_ray(t_mlx *mlxx, double angle)
 		x_intercept = (int)((mlxx->player_x / 40)) * 40;
 		y_intercept = mlxx->player_y + (x_intercept - mlxx->player_x) * tan(angle);
 	}
+    
+    
   
    while (x_intercept >= 0 && x_intercept < mlxx->weight &&
            y_intercept >= 0 && y_intercept < mlxx->height)
@@ -47,11 +49,13 @@ t_point vertical_ray(t_mlx *mlxx, double angle)
         x_intercept -= 40;
         y_intercept -= y_step; 
     }
+    
   }
   if (x_intercept <= 0 || x_intercept >= mlxx->weight || y_intercept <= 0 || y_intercept >= mlxx->height)
   {
       v_point.x = 10000;
       v_point.y = 10000;
+
       return (v_point);
 }
     v_point.x = x_intercept;

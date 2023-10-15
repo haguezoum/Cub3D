@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:56:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/13 16:41:34 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:56:06 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void drow_rays(t_mlx *mlxx, double angle, int color)
 }
 t_point horizontal_ray(t_mlx *mlxx, double angle)
 {
-    int y_intercept;
-    int x_intercept;
-    int x_step;
+    double y_intercept;
+    double x_intercept;
+    double x_step;
     t_point h_point;
 
 	x_step = 40 / tan(M_PI - angle);
@@ -53,9 +53,11 @@ t_point horizontal_ray(t_mlx *mlxx, double angle)
     }
 
     while (x_intercept >= 0 && x_intercept < mlxx->weight &&
-           y_intercept >= 0 && y_intercept < mlxx->height * 40)
+           y_intercept >= 0 && y_intercept < mlxx->height)
     {
-        if (mlxx->map[(int)(y_intercept / 40)][(int)(x_intercept / 40)] == '1' || mlxx->map[(int)(y_intercept / 40) - 1][(int)(x_intercept / 40)] == '1')
+        if ((angle >= 0 && angle < M_PI) && mlxx->map[(int)((y_intercept) / 40) - 1][(int)((x_intercept) / 40)] == '1')
+            break;
+         if (!(angle >= 0 && angle < M_PI) && mlxx->map[(int)(y_intercept / 40)][(int)((x_intercept) / 40)] == '1')
             break;
 
         if (angle >= 0 && angle < M_PI)
@@ -68,6 +70,7 @@ t_point horizontal_ray(t_mlx *mlxx, double angle)
             x_intercept -= x_step;
             y_intercept += 40;
         }
+        
     }
     if (x_intercept <= 0 || x_intercept >= mlxx->weight || y_intercept <= 0 || y_intercept >= mlxx->height)
     {
