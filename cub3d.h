@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/14 22:35:26 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:47:21 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_point
 {
 	float	x;
 	float	y;
-
+	int		pos;
 }t_point;
 
 typedef struct s_mlx
@@ -73,7 +73,7 @@ int	click_key(int key, t_mlx *mlxx);
 t_point horizontal_ray(t_mlx *mlxx, double angle);
 t_point vertical_ray(t_mlx *mlxx, double angle);
 void drow_rays(t_mlx *mlxx, double angle, int color);
-void scan(t_mlx *mlxx, double angle, int color);
+void scan(t_mlx *mlxx, double angle, int color, int i);
 
 // just for test or visualisation the grid
 void drow_grid(t_mlx *mlxx);

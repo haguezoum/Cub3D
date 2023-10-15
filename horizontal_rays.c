@@ -6,33 +6,33 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:56:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/15 11:56:06 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/15 12:05:18 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void drow_rays(t_mlx *mlxx, double angle, int color)
-{
-    int x = mlxx->player_x;
-    int y = mlxx->player_y;
-    int z = 1;
-    int xx, yy;
+// void drow_rays(t_mlx *mlxx, double angle, int color)
+// {
+//     int x = mlxx->player_x;
+//     int y = mlxx->player_y;
+//     int z = 1;
+//     int xx, yy;
 
-    while (z < 100)
-    {
-        xx = x - (z * cos(angle));
-        yy = y - (z * sin(angle));
+//     while (z < 100)
+//     {
+//         xx = x - (z * cos(angle));
+//         yy = y - (z * sin(angle));
         
-        // Check for collision with obstacles in your environment
-        if (mlxx->map[(int)(yy / 40)][(int)(xx / 40)] == '1') {
-            break; // Exit the loop when hitting an obstacle
-        }
+//         // Check for collision with obstacles in your environment
+//         if (mlxx->map[(int)(yy / 40)][(int)(xx / 40)] == '1') {
+//             break; // Exit the loop when hitting an obstacle
+//         }
 
-        my_mlx_pixel_put(&mlxx->img, xx, yy, color);
-        z++;
-    }
-}
+//         my_mlx_pixel_put(&mlxx->img, xx, yy, color);
+//         z++;
+//     }
+// }
 t_point horizontal_ray(t_mlx *mlxx, double angle)
 {
     double y_intercept;
@@ -83,3 +83,4 @@ t_point horizontal_ray(t_mlx *mlxx, double angle)
     // draw_line(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y, mlxx->img, 0x00ff00);
     return (h_point);
 }
+
