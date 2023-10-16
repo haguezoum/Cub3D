@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/15 21:46:30 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/16 10:39:58 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,36 @@ void scan(t_mlx *mlxx, double angle, int i)
     {
         point.x = h_point.x;
         point.y = h_point.y;
-		point.color = 0xa2add0;
+		
+		if (angle >= 0 && angle <= M_PI)
+		{
+			point.color = 0xa2add0;
+		}
+		else
+		{
+			point.color = 0xffdd45;
+		}	
     }
-    else
+    if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y) >
+         distance(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y))
     {
         point.x = v_point.x;
         point.y = v_point.y;
-		point.color = 0x02e0d9;
+		
+		if (angle > M_PI / 2 && angle < (3 * M_PI) / 2)
+		{
+			point.color = 0x02e0d9;
+		}
+		else
+		{
+			point.color = 0x02e075;
+		}
+		
+		
+		
     }
+	
+	
 	int distaproj = (mlxx->weight / 2) / tan(M_PI / 6);
 	double dist = distance(mlxx->player_x, mlxx->player_y, point.x, point.y);
 	
