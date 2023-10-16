@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/15 17:40:58 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:54:04 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,13 @@ void	drow_mini_map(t_mlx	*mlxx)
 	my_mlx_pixel_put(&mlxx->img, mlxx->player_x / 4,
 		mlxx->player_y / 4, 0x00ff00);
 	drow_rays(mlxx, mlxx->angle, 0x00ff00);
+	// for git color from the image 
+	// int weight = 100;
+	// int height = 100;
+	// int bits_per_pixel;
+	// int size_line;
+	// int endian;
+	// void *new = mlx_xpm_file_to_image(mlxx->mlx, "/Users/abdel-ou/Desktop/1234.xpm", &weight, &height);
+	// unsigned int *img_data = (unsigned int *)mlx_get_data_addr(new,&bits_per_pixel, &size_line, &endian);
+	// printf("%d\n", img_data[0]);
 }
