@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/17 08:51:33 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:25:23 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ void	drow_mini_map(t_mlx	*mlxx)
 	// int bits_per_pixel;
 	// int size_line;
 	// int endian;
-	// void *new = mlx_xpm_file_to_image(mlxx->mlx, "/Users/abdel-ou/Desktop/1234.xpm", &weight, &height);
+	// void *new = mlx_xpm_file_to_image(mlxx->mlx, "/Users/abdel-ou/Desktop/wall_40.xpm", &weight, &height);
 	// unsigned int *img_data = (unsigned int *)mlx_get_data_addr(new,&bits_per_pixel, &size_line, &endian);
 	//     int x, y;
-    // for (y = 0; y <= 200; y++) {
-    //     for (x = 0; x < 200; x++) {
-    //         unsigned int color = img_data[y * 200 + x]; // Get the pixel color
+    // for (y = 0; y <= 40; y++) {
+    //     for (x = 0; x < 40; x++) {
+    //         unsigned int color = img_data[y * 40 + x]; // Get the pixel color
     //         my_mlx_pixel_put(&mlxx->img, x + 100, y + 100, color); // And put it to the window
     //     }
     // }
