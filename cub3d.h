@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/15 21:47:05 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:52:20 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_point	vertical_ray(t_mlx *mlxx, double angle);
 void	drow_rays(t_mlx *mlxx, double angle, int color);
 void	scan(t_mlx *mlxx, double angle, int i);
 void	drow_mini_map(t_mlx *mlxx);
+unsigned int *load_color(t_mlx *mlx, char *path);
 
 // just for test or visualisation the grid
 void	drow_grid(t_mlx *mlxx);

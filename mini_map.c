@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/17 15:25:23 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:34:06 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,6 @@ void	drow_mini_map(t_mlx	*mlxx)
 		mlxx->player_y / 4, 0x00ff00);
 	drow_rays(mlxx, mlxx->angle, 0x00ff00);
 	// for git color from the image
-	// int weight = 100;
-	// int height = 100;
-	// int bits_per_pixel;
-	// int size_line;
-	// int endian;
-	// void *new = mlx_xpm_file_to_image(mlxx->mlx, "/Users/abdel-ou/Desktop/wall_40.xpm", &weight, &height);
-	// unsigned int *img_data = (unsigned int *)mlx_get_data_addr(new,&bits_per_pixel, &size_line, &endian);
-	//     int x, y;
-    // for (y = 0; y <= 40; y++) {
-    //     for (x = 0; x < 40; x++) {
-    //         unsigned int color = img_data[y * 40 + x]; // Get the pixel color
-    //         my_mlx_pixel_put(&mlxx->img, x + 100, y + 100, color); // And put it to the window
-    //     }
-    // }
 }
+
+

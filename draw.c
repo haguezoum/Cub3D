@@ -6,24 +6,22 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/16 10:39:58 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:29:41 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-
-float distance(int x1, int y1, int x2, int y2)
+float	distance(int x1, int y1, int x2, int y2)
 {
-    float x;
-    float y;
-    float z;
-    
-    x = x2 - x1;
-    y = y2 - y1;
-    z = sqrt((x * x) + (y * y));
-    return (z);
+	float	x;
+	float	y;
+	float	z;
+
+	x = x2 - x1;
+	y = y2 - y1;
+	z = sqrt((x * x) + (y * y));
+	return (z);
 }
 
 void scan(t_mlx *mlxx, double angle, int i)
@@ -62,9 +60,6 @@ void scan(t_mlx *mlxx, double angle, int i)
 		{
 			point.color = 0x02e075;
 		}
-		
-		
-		
     }
 	
 	
@@ -85,6 +80,7 @@ void scan(t_mlx *mlxx, double angle, int i)
 	draw_line(i,(mlxx->height / 2) , i, mlxx->height , mlxx->img, 0x999999);
 	
     draw_line(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, point.color);
+	// printf("butom = %d  || top = %d \n", (mlxx->height / 2) + (wall_h / 2), (mlxx->height / 2) - (wall_h / 2));
 }
 
 void	drow_player(t_mlx mlxx)
@@ -116,7 +112,20 @@ int    drow(void *param)
 
 	drow_player (*mlxx);
 	drow_mini_map(mlxx);
-	// drow_grid(mlxx);
+	unsigned int *img_data = load_color(mlxx, "/Users/abdel-ou/Desktop/wall_40.xpm");
+	 int x = 0;
+	 int y = 0;
+    while (y < 40)
+	{
+        while (x < 40)
+		{
+			my_mlx_pixel_put(&mlxx->img, x, y, img_data[y * 40 + x]);
+			x++;
+        }
+		x = 0;
+		y++;
+    }
+	
 
 	mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
 	return 0;
