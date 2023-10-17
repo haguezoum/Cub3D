@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:37:33 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/05 13:27:42 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/17 08:42:07 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	**memory_allocete(char *file_name)
 		free(line);
 		line = get_next_line(fd, 5);
 	}
+	free(line);
 	new = (char **)malloc(sizeof(char *) * (y + 1));
 	while (y > 0)
 		new[--y] = (char *)malloc(sizeof(char) * (x + 1));
