@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/17 18:29:41 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:18:06 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void scan(t_mlx *mlxx, double angle, int i)
 	draw_line(i, 0 , i, (mlxx->height / 2) , mlxx->img, 0x6fa8dc);
 	draw_line(i,(mlxx->height / 2) , i, mlxx->height , mlxx->img, 0x999999);
 	
-    draw_line(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, point.color);
-	// printf("butom = %d  || top = %d \n", (mlxx->height / 2) + (wall_h / 2), (mlxx->height / 2) - (wall_h / 2));
+    draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, mlxx->color);
+	
 }
 
 void	drow_player(t_mlx mlxx)
@@ -112,19 +112,34 @@ int    drow(void *param)
 
 	drow_player (*mlxx);
 	drow_mini_map(mlxx);
-	unsigned int *img_data = load_color(mlxx, "/Users/abdel-ou/Desktop/wall_40.xpm");
-	 int x = 0;
-	 int y = 0;
-    while (y < 40)
-	{
-        while (x < 40)
-		{
-			my_mlx_pixel_put(&mlxx->img, x, y, img_data[y * 40 + x]);
-			x++;
-        }
-		x = 0;
-		y++;
-    }
+	// unsigned int *img_data = load_color(mlxx, "/Users/abdel-ou/Desktop/1234.xpm");
+	// int x = 0;
+	// int y = 0;
+	// int inc = 0;
+	// while (x < 200)
+	// {
+	// 	while (y < 200)
+	// 	{
+		
+	// 		my_mlx_pixel_put(&mlxx->img, x, y, img_data[ y * 200 + x]);
+	// 		y++;
+	// 	}
+	// 	if (inc < 20)
+	// 	{
+	// 		y = 0;
+	// 		x++;
+	// 		inc++;
+	// 	}
+	// 	else
+	// 	{
+	// 		y = 0;
+	// 		inc = 0;
+	// 		x += 5;
+	// 	}
+	// }
+	
+	
+	
 	
 
 	mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
