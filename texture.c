@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:52:19 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/17 20:26:16 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:32:58 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ unsigned int	*load_color(t_mlx *mlx, char *path)
 	new = mlx_xpm_file_to_image(mlx->mlx, path, &height, &weight);
 	img_data = (unsigned int *)mlx_get_data_addr(new,
 			&weight, &size_line, &endian);
-			// printf("%d\n", height);
 	return (img_data);
 }
