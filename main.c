@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/19 13:30:28 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/21 10:18:30 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ void init_param(t_mlx *mlxx,  char *file_name)
 	mlxx->img.img = mlx_new_image(mlxx->mlx,mlxx-> weight, mlxx->height);
 	mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel, &mlxx->img.line_length,
 			&mlxx->img.endian);
-	mlxx->color = load_color(mlxx, "/Users/abdel-ou/Desktop/1234.xpm");
+	mlxx->color1 = load_color(mlxx, "/Users/abdel-ou/Desktop/wall_40_1.xpm");
+	mlxx->color2 = load_color(mlxx, "/Users/abdel-ou/Desktop/wall_40_2.xpm");
+	mlxx->color3 = load_color(mlxx, "/Users/abdel-ou/Desktop/wall_40_3.xpm");
+	mlxx->color4 = load_color(mlxx, "/Users/abdel-ou/Desktop/wall_40_4.xpm");
 }
 
 
@@ -65,6 +68,7 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 		init_param(&mlxx, argv[1]);
+		printf("%d\n",mlxx.height);
 	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 	mlx_hook(mlxx.mlx_win,2,0, click_key, &mlxx);
 	mlx_loop(mlxx.mlx);

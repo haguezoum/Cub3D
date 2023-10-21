@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/19 15:35:43 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/21 10:31:40 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void draw_line(int x0, int y0, int x1, int y1, t_data img, int color)
 {
+     if (y0 > 360)
+        y0 = 360;
+    if (y1 < 0)
+        y1 = 0;
     int dx = abs(x1 - x0);
     int dy = abs(y1 - y0);
     int steps;
@@ -46,12 +50,27 @@ void draw_line(int x0, int y0, int x1, int y1, t_data img, int color)
     }
 }
 
-void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color)
+void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset)
 {
+    int tmp_y0 = y0;
+     int tmp_y1 = y1;
+    if (y0 > 360)
+    {
+        
+        y0 = 360;
+    }
+        
+    if (y1 < 0)
+    {
+       
+        y1 = 0;
+    }
+
     int dx = abs(x1 - x0);
     int dy = abs(y1 - y0);
     int steps;
     int i = 0;
+    float ii = 0;
 
     if (dx > dy)
         steps = dx;
@@ -63,28 +82,17 @@ void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color
     double x = x0;
     double y = y0;
 
-  
-    int ii  = 200;
-    int inc = 0;
-  
-    
+    float coff = 40.0 / (tmp_y0 - tmp_y1); // Calculate coff using absolute difference in y
+
     while (i <= steps)
     {
-        my_mlx_pixel_put(&img, round(x), round(y), color[(x0 % 200) + (ii % 200) * 200]);
+        my_mlx_pixel_put(&img, round(x), round(y), color[(int)ii * 40 + x_offset]); // Use i to index the color array
         x += x_increment;
         y += y_increment;
+        ii += coff;
         i++;
-        
-        
-        if (inc > (int)(steps / 200))
-        {
-            ii--;
-            inc = 0;
-        }
-        inc++;
-        
     }
-    
 }
+
 
 

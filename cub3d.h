@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/18 10:56:14 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/21 09:44:33 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ typedef struct s_point
 {
 	float	x;
 	float	y;
+	float	x_offset;
+	float 	y_offset;
+	char 	type;
 	int		color;
+	unsigned int *color_array;
 }t_point;
 
 typedef struct s_mlx
@@ -50,7 +54,10 @@ typedef struct s_mlx
 	double	angle;
 	int		height;
 	int		weight;
-	unsigned int *color;
+	unsigned int *color1;
+	unsigned int *color2;
+	unsigned int *color3;
+	unsigned int *color4;
 }t_mlx;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -76,7 +83,7 @@ void	drow_rays(t_mlx *mlxx, double angle, int color);
 void	scan(t_mlx *mlxx, double angle, int i);
 void	drow_mini_map(t_mlx *mlxx);
 unsigned int *load_color(t_mlx *mlx, char *path);
-void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color);
+void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset);
 
 // just for test or visualisation the grid
 void	drow_grid(t_mlx *mlxx);
