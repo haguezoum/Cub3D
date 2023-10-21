@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/21 10:31:40 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/21 10:55:11 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color
     double y_increment = (y1 - y0) / (double)steps;
     double x = x0;
     double y = y0;
-
+   
     float coff = 40.0 / (tmp_y0 - tmp_y1); // Calculate coff using absolute difference in y
 
     while (i <= steps)
