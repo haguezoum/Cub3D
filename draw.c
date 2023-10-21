@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/21 10:31:25 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:33:37 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,10 @@ void scan(t_mlx *mlxx, double angle, int i)
 		if (angle >= 0 && angle <= M_PI)
 		{
 			point.color = 0xa2add0;
-			point.color_array = mlxx->color1;
 		}
 		else
 		{
-			point.color_array = mlxx->color2;
+			point.color = 0xffdd45;
 		}	
     }
     if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y) >
@@ -63,12 +62,10 @@ void scan(t_mlx *mlxx, double angle, int i)
 		if (angle > M_PI / 2 && angle < (3 * M_PI) / 2)
 		{
 			point.color = 0x02e0d9;
-			point.color_array = mlxx->color3;
 		}
 		else
 		{
 			point.color = 0x02e075;
-			point.color_array = mlxx->color4;
 		}
     }
 	
@@ -84,11 +81,14 @@ void scan(t_mlx *mlxx, double angle, int i)
 	// -----------------------------------
 
 	int wall_h = (40 / new_dest) * distaproj;
-	
+	if (wall_h > mlxx->height)
+	{
+		wall_h = mlxx->height;
+	}
 	draw_line(i, 0 , i, (mlxx->height / 2) , mlxx->img, 0x6fa8dc);
 	draw_line(i,(mlxx->height / 2) , i, mlxx->height , mlxx->img, 0x999999);
 	
-    draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, point.color_array,  point.x_offset);
+    draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, mlxx->color,  point.x_offset);
 	
 }
 

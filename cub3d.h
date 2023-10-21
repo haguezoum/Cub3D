@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/21 09:44:33 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:33:18 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ typedef struct s_mlx
 	double	angle;
 	int		height;
 	int		weight;
-	unsigned int *color1;
-	unsigned int *color2;
-	unsigned int *color3;
-	unsigned int *color4;
+	unsigned int *color;
 }t_mlx;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
