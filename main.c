@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/21 12:36:35 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/23 19:44:53 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void player_int(t_mlx *mlxx)
 
 	i = 0;
 	j = 0;
-		while (mlxx->map[i + 1])
+		while (i < 9)
 	{
-		while (mlxx->map[i][j])
+		while (j < 18)
 		{
-			if (mlxx->map[i][j] == 'p')
+			if (mlxx->map[i][j] && mlxx->map[i][j] == 'p')
 			{
 				mlxx->player_y = i * 40 + 20;
 				mlxx->player_x = j * 40 + 20;

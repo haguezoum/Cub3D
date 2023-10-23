@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/21 10:55:11 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:44:51 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void draw_line(int x0, int y0, int x1, int y1, t_data img, int color)
+void draw_line(int x0, int y0, int x1, int y1, t_data img, int color, t_mlx *mlxx)
 {
      if (y0 > 360)
         y0 = 360;
@@ -43,21 +43,21 @@ void draw_line(int x0, int y0, int x1, int y1, t_data img, int color)
     int i = 0;
     while (i <= steps)
     {
-        my_mlx_pixel_put(&img, round(x), round(y), color);
+         if (x >= 0 && x < mlxx->weight && y >= 0 && y < mlxx->height)
+            my_mlx_pixel_put(&img, round(x), round(y), color);
         x += x_increment;
         y += y_increment;
         i++;
     }
 }
 
-void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset)
+void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx)
 {
-    int tmp_y0 = y0;
-     int tmp_y1 = y1;
-    if (y0 > 360)
+    
+    if (y0 > mlxx->height)
     {
         
-        y0 = 360;
+        y0 = mlxx->height;
     }
         
     if (y1 < 0)
@@ -65,6 +65,8 @@ void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color
        
         y1 = 0;
     }
+    int tmp_y0 = y0;
+     int tmp_y1 = y1;
 
     int dx = abs(x1 - x0);
     int dy = abs(y1 - y0);
@@ -86,7 +88,10 @@ void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color
 
     while (i <= steps)
     {
-        my_mlx_pixel_put(&img, round(x), round(y), color[(int)ii * 40 + x_offset]); // Use i to index the color array
+        int colors = (int)ii * 40 + x_offset;
+        
+        if (x >= 0 && x < mlxx->weight && y >= 0 && y < mlxx->height && colors < 1600)
+            my_mlx_pixel_put(&img, round(x), round(y), color[colors]); // Use i to index the color array
         x += x_increment;
         y += y_increment;
         ii += coff;
