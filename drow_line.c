@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/24 15:52:48 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:18:57 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color
     double x = x0;
     double y = y0;
    
-    float coff = 40.0 / (tmp_wall_h); // Calculate coff using absolute difference in y
+    
 
     while (i <= steps)
     {
         int colors = (int)ii * 40 + x_offset;
-        
+        float coff = 40.0 / (tmp_wall_h);
         if (x >= 0 && x < mlxx->weight && y >= 0 && y < mlxx->height && colors < 1600)
             my_mlx_pixel_put(&img, round(x), round(y), color[colors]); // Use i to index the color array
         x += x_increment;
