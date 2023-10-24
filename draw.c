@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/23 21:33:48 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:51:41 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void scan(t_mlx *mlxx, double angle, int i)
 	// -----------------------------------
 
 	int wall_h = (40 / new_dest) * distaproj;
+	int tmp_wall_h = wall_h;
 	if (wall_h > mlxx->height)
 	{
 		wall_h = mlxx->height;
@@ -88,7 +89,7 @@ void scan(t_mlx *mlxx, double angle, int i)
 	draw_line(i, 0 , i, (mlxx->height / 2) , mlxx->img, 0x6fa8dc, mlxx);
 	draw_line(i,(mlxx->height / 2) , i, mlxx->height , mlxx->img, 0x999999, mlxx);
 	
-    draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, mlxx->color,  point.x_offset, mlxx);
+    draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, mlxx->color1,  point.x_offset, mlxx, tmp_wall_h);
 	
 	
 	// draw_line(i,(mlxx->height / 2) + (wall_h / 2) , i, (mlxx->height / 2) - (wall_h / 2) , mlxx->img, point.color, mlxx);

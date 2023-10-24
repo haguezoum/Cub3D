@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:28:34 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/15 20:54:23 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:26:45 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ t_point vertical_ray(t_mlx *mlxx, double angle)
     }
     
   }
-  if (x_intercept <= 0 || x_intercept >= mlxx->weight || y_intercept <= 0 || y_intercept >= mlxx->height)
-  {
-      v_point.x = 10000;
-      v_point.y = 10000;
+//   if (x_intercept <= 0 || x_intercept >= mlxx->weight || y_intercept <= 0 || y_intercept >= mlxx->height)
+//   {
+//       v_point.x = 10000;
+//       v_point.y = 10000;
 
-      return (v_point);
-}
+//       return (v_point);
+// }
     v_point.x = x_intercept;
     v_point.y = y_intercept;
     // draw_line(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y, mlxx->img, 0xff0000);

@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/23 21:44:51 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:52:48 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void draw_line(int x0, int y0, int x1, int y1, t_data img, int color, t_mlx *mlx
     }
 }
 
-void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx)
+void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx, int tmp_wall_h)
 {
     
     if (y0 > mlxx->height)
@@ -84,7 +84,7 @@ void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color
     double x = x0;
     double y = y0;
    
-    float coff = 40.0 / (tmp_y0 - tmp_y1); // Calculate coff using absolute difference in y
+    float coff = 40.0 / (tmp_wall_h); // Calculate coff using absolute difference in y
 
     while (i <= steps)
     {

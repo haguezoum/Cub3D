@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/23 19:44:53 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:42:58 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void init_param(t_mlx *mlxx,  char *file_name)
 	mlxx->img.img = mlx_new_image(mlxx->mlx,mlxx-> weight, mlxx->height);
 	mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel, &mlxx->img.line_length,
 			&mlxx->img.endian);
-	mlxx->color = load_color(mlxx, "/Users/abdel-ou/Desktop/cub3d/texture/wall_40_1.xpm");
+	mlxx->color1 = load_color(mlxx, "./texture/wall_40_1.xpm");
 }
 
 
