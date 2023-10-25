@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/25 13:09:58 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:22:09 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,50 +53,28 @@ void draw_line(int x0, int y0, int x1, int y1, t_data img, int color, t_mlx *mlx
 
 void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx, int tmp_wall_h)
 {
-    
     if (y0 > mlxx->height)
-    {
-        
-        y0 = mlxx->height;
-    }
-        
+        y0 = mlxx->height;   
     if (y1 < 0)
-    {
-       
         y1 = 0;
-    }
     int tmp_y0 = y0;
      int tmp_y1 = y1;
-
-    int dx = abs(x1 - x0);
-    int dy = abs(y1 - y0);
-    int steps;
     int i = 0;
+    int steps = abs(y1 - y0);
     float ii = 0;
 
-    if (dx > dy)
-        steps = dx;
-    else
-        steps = dy;
 
-    double x_increment = (x1 - x0) / (double)steps;
-    double y_increment = (y1 - y0) / (double)steps;
-    double x = x0;
-    double y = y0;
    
-//    if (tmp_wall_h > (tmp_y0 - tmp_y1))
-//    {
-//          tmp_wall_h = tmp_y0 - tmp_y1;
-//    }
-    
+    double y_increment = (y1 - y0) / (double)steps;
+    double y = y0;
 float coff = 40.0 / (tmp_wall_h);
     while (i <= steps)
     {
         int colors = (int)ii * 40 + x_offset;
         
-        if (x >= 0 && x < mlxx->weight && y >= 0 && y < mlxx->height && colors < 1600)
-            my_mlx_pixel_put(&img, round(x), round(y), color[colors]); // Use i to index the color array
-        x += x_increment;
+        
+        if (x0 >= 0 && x0 < mlxx->weight && y >= 0 && y < mlxx->height && colors < 1600)
+            my_mlx_pixel_put(&img, round(x0), round(y), color[colors]); // Use i to index the color array
         y += y_increment;
         ii += coff;
         i++;
