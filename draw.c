@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/24 15:51:41 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:05:16 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void scan(t_mlx *mlxx, double angle, int i)
 		
 		point.x_offset = (int)v_point.y % 40;
 		
-		
 		if (angle > M_PI / 2 && angle < (3 * M_PI) / 2)
 		{
 			point.color = 0x02e0d9;
@@ -92,7 +91,6 @@ void scan(t_mlx *mlxx, double angle, int i)
     draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), i, (mlxx->height / 2) - (wall_h / 2), mlxx->img, mlxx->color1,  point.x_offset, mlxx, tmp_wall_h);
 	
 	
-	// draw_line(i,(mlxx->height / 2) + (wall_h / 2) , i, (mlxx->height / 2) - (wall_h / 2) , mlxx->img, point.color, mlxx);
 	
 	
 }

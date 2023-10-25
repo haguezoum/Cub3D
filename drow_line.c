@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/24 17:18:57 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:09:58 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,16 @@ void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color
     double x = x0;
     double y = y0;
    
+//    if (tmp_wall_h > (tmp_y0 - tmp_y1))
+//    {
+//          tmp_wall_h = tmp_y0 - tmp_y1;
+//    }
     
-
+float coff = 40.0 / (tmp_wall_h);
     while (i <= steps)
     {
         int colors = (int)ii * 40 + x_offset;
-        float coff = 40.0 / (tmp_wall_h);
+        
         if (x >= 0 && x < mlxx->weight && y >= 0 && y < mlxx->height && colors < 1600)
             my_mlx_pixel_put(&img, round(x), round(y), color[colors]); // Use i to index the color array
         x += x_increment;
