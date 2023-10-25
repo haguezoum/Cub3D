@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/25 18:22:09 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/25 21:35:28 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,42 @@ void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color
      int tmp_y1 = y1;
     int i = 0;
     int steps = abs(y1 - y0);
-    float ii = 0;
+    double y_increment = (y1 - y0) / (double)steps;
+    
 
 
    
-    double y_increment = (y1 - y0) / (double)steps;
-    double y = y0;
-float coff = 40.0 / (tmp_wall_h);
-    while (i <= steps)
+    double conter = mlxx->height / 2;
+    float coff = 40.0 / (tmp_wall_h);
+    float ii = coff * (tmp_wall_h / 2);
+    while (i <= (steps / 2))
     {
         int colors = (int)ii * 40 + x_offset;
         
         
-        if (x0 >= 0 && x0 < mlxx->weight && y >= 0 && y < mlxx->height && colors < 1600)
-            my_mlx_pixel_put(&img, round(x0), round(y), color[colors]); // Use i to index the color array
-        y += y_increment;
+        if (x0 >= 0 && x0 < mlxx->weight && conter >= 0 && conter < mlxx->height && colors < 1600)
+            my_mlx_pixel_put(&img, round(x0), round(conter), color[colors]); // center to top ray
+        conter -= y_increment;
+        ii -= coff;
+        i++;
+    }
+
+
+    
+    i = 0;
+         conter = mlxx->height / 2;
+     coff = 40.0 / (tmp_wall_h);
+     ii = coff * (tmp_wall_h / 2);
+    
+
+      while (i <= (steps / 2))
+    {
+        int colors = (int)ii * 40 + x_offset;
+        
+        
+        if (x0 >= 0 && x0 < mlxx->weight && conter >= 0 && conter < mlxx->height && colors < 1600)
+            my_mlx_pixel_put(&img, round(x0), round(conter), color[colors]); // center to top ray
+        conter += y_increment;
         ii += coff;
         i++;
     }
