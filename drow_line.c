@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/25 21:35:28 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:19:07 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,7 @@ void draw_line(int x0, int y0, int x1, int y1, t_data img, int color, t_mlx *mlx
 
 void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx, int tmp_wall_h)
 {
-    if (y0 > mlxx->height)
-        y0 = mlxx->height;   
-    if (y1 < 0)
-        y1 = 0;
-    int tmp_y0 = y0;
-     int tmp_y1 = y1;
+   
     int i = 0;
     int steps = abs(y1 - y0);
     double y_increment = (y1 - y0) / (double)steps;
@@ -83,12 +78,10 @@ void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color
 
 
     
-    i = 0;
+        i = 0;
          conter = mlxx->height / 2;
-     coff = 40.0 / (tmp_wall_h);
-     ii = coff * (tmp_wall_h / 2);
+        ii = coff * (tmp_wall_h / 2);
     
-
       while (i <= (steps / 2))
     {
         int colors = (int)ii * 40 + x_offset;
