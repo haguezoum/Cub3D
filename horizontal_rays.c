@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:56:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/26 10:00:41 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:44:13 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_point	horizontal_ray(t_mlx *mlxx, double angle)
 		x_intercept = mlxx->player_x
 			+ (y_intercept - mlxx->player_y) / tan(angle);
 	}
-	while (x_intercept >= 0 && x_intercept < mlxx->weight
-		&& y_intercept >= 0 && y_intercept < mlxx->height)
+	while (x_intercept >= 0 && x_intercept < 720
+		&& y_intercept >= 0 && y_intercept < 360)
 	{
 		if ((angle >= 0 && angle < M_PI)
 			&& mlxx->map[(int)((y_intercept) / 40) - 1]
@@ -54,8 +54,8 @@ t_point	horizontal_ray(t_mlx *mlxx, double angle)
 			y_intercept += 40;
 		}
 	}
-	if (x_intercept <= 0 || x_intercept >= mlxx->weight || y_intercept <= 0
-		|| y_intercept >= mlxx->height)
+	if (x_intercept <= 0 || x_intercept >= 720 || y_intercept <= 0
+		|| y_intercept >= 360)
 	{
 		h_point.x = 10000;
 		h_point.y = 10000;

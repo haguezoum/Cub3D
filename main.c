@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/26 12:58:44 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:41:17 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void init_param(t_mlx *mlxx,  char *file_name)
 	mlxx->weight = ft_strlen(get_next_line(fd, 1)) - 1;
 	while (get_next_line(fd, 1))
 		mlxx->height++;
-	mlxx->weight = mlxx->weight * 40;
-	mlxx->height = mlxx->height * 40;
+	mlxx->weight = 1280;
+	mlxx->height = 720;
 	mlxx->map = load_map(file_name);
 	player_int(mlxx);
 

@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:28:34 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/24 15:26:45 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:54:36 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_point vertical_ray(t_mlx *mlxx, double angle)
     
     
   
-   while (x_intercept >= 0 && x_intercept < mlxx->weight &&
-           y_intercept >= 0 && y_intercept < mlxx->height)
+   while (x_intercept >= 0 && x_intercept < 720 &&
+           y_intercept >= 0 && y_intercept < 360)
   {
      if (mlxx->map[(int)(y_intercept / 40)][(int)(x_intercept / 40)] == '1' || mlxx->map[(int)(y_intercept / 40) ][(int)(x_intercept / 40) - 1] == '1')
         {
@@ -51,16 +51,14 @@ t_point vertical_ray(t_mlx *mlxx, double angle)
     }
     
   }
-//   if (x_intercept <= 0 || x_intercept >= mlxx->weight || y_intercept <= 0 || y_intercept >= mlxx->height)
-//   {
-//       v_point.x = 10000;
-//       v_point.y = 10000;
+  if (x_intercept <= 0 || x_intercept >= 720 || y_intercept <= 0 || y_intercept >= 360)
+  {
+      v_point.x = 10000;
+      v_point.y = 10000;
 
-//       return (v_point);
-// }
+      return (v_point);
+}
     v_point.x = x_intercept;
     v_point.y = y_intercept;
-    // draw_line(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y, mlxx->img, 0xff0000);
     return (v_point);
-    //  printf("x_intercept = %d || y_intercept = %d || angle = %f \n", x_intercept, y_intercept, mlxx->angle * (180 / M_PI));
 }   
