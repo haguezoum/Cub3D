@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/01 17:25:22 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:17:03 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void scan(t_mlx *mlxx, double angle, int i)
         point.y = h_point.y;
 
 		point.x_offset = (int)h_point.x % 40;
-		
 		if (angle > 0 && angle < M_PI)
 		{
 			point.color = 0xa2add0;
