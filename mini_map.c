@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/21 10:56:35 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:40:14 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	drow_mini_map(t_mlx	*mlxx)
 
 	i = 0;
 	j = 0;
-	while (mlxx->map[i])
+	while (i < 9)
 	{
-		while (mlxx->map[i][j])
+		while (j < 18)
 		{
 			if (mlxx->map[i][j] == '1')
 				drow_square(j, i, mlxx->img, 0xffffff);

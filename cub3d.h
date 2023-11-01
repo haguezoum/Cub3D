@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/26 08:55:54 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:24:45 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_mlx
 	double	angle;
 	int		height;
 	int		weight;
+	int		color_select;
 	unsigned int *color1;
 	unsigned int *color2;
 	unsigned int *color3;
@@ -83,7 +84,8 @@ void	drow_rays(t_mlx *mlxx, double angle, int color);
 void	scan(t_mlx *mlxx, double angle, int i);
 // void	drow_mini_map(t_mlx *mlxx);
 unsigned int *load_color(t_mlx *mlx, char *path);
-void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx, int tmp_wall_h);
+void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx, int tmp_wall_h);
+void	drow_mini_map(t_mlx	*mlxx);
 
 // just for test or visualisation the grid
 // void	drow_grid(t_mlx *mlxx);

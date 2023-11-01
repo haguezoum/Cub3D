@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/13 08:40:19 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:44:22 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,27 @@ int vurtual_move(int key, t_mlx *mlxx)
 		tmp_angle -= 0.07;
 	if (key == 13)
 	{
-		tmp_x -= 7 * cos(tmp_angle);
-		tmp_y -= 7 * sin(tmp_angle);
+		tmp_x -= 13 * cos(tmp_angle);
+		tmp_y -= 13 * sin(tmp_angle);
 	}
 	if (key == 1)
 	{
-		tmp_x +=7 * cos(tmp_angle);
-		tmp_y +=7 * sin(tmp_angle);
+		tmp_x += 13 * cos(tmp_angle);
+		tmp_y += 13 * sin(tmp_angle);
 	}
 		if (key == 0)
 	{
-		tmp_x -= 7 * cos(tmp_angle -  1.5708);
-		tmp_y -= 7 * sin(tmp_angle - 1.5708);
+		tmp_x -= 13 * cos(tmp_angle -  1.5708);
+		tmp_y -= 13 * sin(tmp_angle - 1.5708);
 	}
 		if (key == 2)
 	{
-		tmp_x -= 7 * cos(tmp_angle +  1.5708);
-		tmp_y -= 7 * sin(tmp_angle + 1.5708);
+		tmp_x -= 13 * cos(tmp_angle +  1.5708);
+		tmp_y -= 13 * sin(tmp_angle + 1.5708);
 	}
 	if (mlxx->map[(int)tmp_y / 40][(int)tmp_x / 40] == '1')
 		return (0);
-	if (mlxx->map[(int)mlxx->player_y / 40][(int)tmp_x / 40] == '1' || mlxx->map[(int)mlxx->player_y / 40][(int)mlxx->player_x / 40] == '1')
+	if (mlxx->map[(int)mlxx->player_y / 40][(int)tmp_x / 40] == '1' || mlxx->map[(int)tmp_y / 40][(int)mlxx->player_x / 40] == '1')
 		return (0);
 	return (1);
 }
@@ -70,23 +70,23 @@ int	click_key(int key, t_mlx *mlxx)
 		mlxx->angle -= 0.07;
 	if (key == 13)
 	{
-		mlxx->player_x -= 7 * cos(mlxx->angle);
-		mlxx->player_y -= 7 * sin(mlxx->angle);
+		mlxx->player_x -= 13 * cos(mlxx->angle);
+		mlxx->player_y -= 13 * sin(mlxx->angle);
 	}
 	if (key == 0)
 	{
-		mlxx->player_x -= 7 * cos(mlxx->angle -  1.5708);
-		mlxx->player_y -= 7 * sin(mlxx->angle - 1.5708);
+		mlxx->player_x -= 13 * cos(mlxx->angle -  1.5708);
+		mlxx->player_y -= 13 * sin(mlxx->angle - 1.5708);
 	}
 		if (key == 2)
 	{
-		mlxx->player_x -= 7 * cos(mlxx->angle +  1.5708);
-		mlxx->player_y -= 7 * sin(mlxx->angle + 1.5708);
+		mlxx->player_x -= 13 * cos(mlxx->angle +  1.5708);
+		mlxx->player_y -= 13 * sin(mlxx->angle + 1.5708);
 	}
 	if (key == 1)
 	{
-		mlxx->player_x += 7 * cos(mlxx->angle );
-		mlxx->player_y += 7 * sin(mlxx->angle);
+		mlxx->player_x += 13 * cos(mlxx->angle );
+		mlxx->player_y += 13 * sin(mlxx->angle);
 	}
 	if (mlxx->angle <= 0)
 		mlxx->angle += 2 * M_PI;

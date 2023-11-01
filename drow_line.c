@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/26 13:04:10 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:24:23 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void draw_line(int x0, int y0, int x1, int y1, t_data img, int color, t_mlx *mlx
     }
 }
 
-void draw_line_x(int x0, int y0, int x1, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx, int tmp_wall_h)
+void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx, int tmp_wall_h)
 {
    
     int i = 0;
