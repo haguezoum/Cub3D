@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 12:26:31 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:35:14 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,4 +143,9 @@ int	cube_atoi(const char *str);
 int check_map_name(char *map_name);
 int check_path(t_mlx *mlxx);
 int extention(char *line);
+
+//  utils functions 2
+void free_double(char **double_char_pointer);
+int table_counter(char **tab);
+int player_in_border(char **map);
 #endif
