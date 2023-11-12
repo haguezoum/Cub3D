@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:28:34 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/11 17:27:21 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:21:32 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,6 @@ t_point	vertical_ray(t_mlx *mlxx, double angle)
         y_intercept -= y_step; 
 	}
 	}
-	// if (x_intercept <= 0 || x_intercept >= (mlxx->w_weight) || y_intercept <= 0
-	// 	|| y_intercept >= (mlxx->w_height))
-	// {
-	// 	v_point.x = 10000000;
-	// 	v_point.y = 10000000;
-	// 	return (v_point);
-	// }
 	v_point.x = x_intercept;
 	v_point.y = y_intercept;
 	return (v_point);

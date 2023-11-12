@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 09:58:13 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:19:21 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,10 @@ void scan(t_mlx *mlxx, double angle, int i)
 		point.x_offset = (int)h_point.x % 40 ;
 		if (angle > 0 && angle < M_PI)
 		{
-			point.color = 0xa2add0;
 			mlxx->color_select = 1;
 		}
 		else
 		{
-			point.color = 0xffdd45;
 			mlxx->color_select = 2;
 		}	
     }
@@ -60,19 +58,13 @@ void scan(t_mlx *mlxx, double angle, int i)
 		
 		if (angle > M_PI / 2 && angle < (3 * M_PI) / 2)
 		{
-			point.color = 0x02e0d9;
 			mlxx->color_select = 3;
 		}
 		else
 		{
-			point.color = 0x02e075;
 			mlxx->color_select = 4;
 		}
-    }
-	
-
-
-	
+    }	
 	int distaproj = (mlxx->w_weight / 2) / tan(M_PI / 6);
 	double dist = distance(mlxx->player_x, mlxx->player_y, point.x, point.y);
 
@@ -86,12 +78,9 @@ void scan(t_mlx *mlxx, double angle, int i)
 	int wall_h = (40 / new_dest) * distaproj;
 	int tmp_wall_h = wall_h;
 	if (wall_h > mlxx->w_height)
-	{
 		wall_h = mlxx->w_height;
-	}
 	draw_line(i, 0 , i, (mlxx->w_height / 2) , mlxx->img, mlxx->C_color, mlxx);
 	draw_line(i,(mlxx->w_height / 2) , i, mlxx->w_height , mlxx->img, mlxx->F_color, mlxx);
-	// point.x_offset *= 10;
 	if (mlxx->color_select == 1)
 		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color1,  point.x_offset, mlxx, tmp_wall_h);
 	if (mlxx->color_select == 2)
@@ -100,8 +89,6 @@ void scan(t_mlx *mlxx, double angle, int i)
 		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color3,  point.x_offset, mlxx, tmp_wall_h);
 	if (mlxx->color_select == 4)
 		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color4,  point.x_offset, mlxx, tmp_wall_h);
-	
-	
 }
 
 void	drow_player(t_mlx mlxx)
@@ -124,16 +111,13 @@ void	drow_player(t_mlx mlxx)
 	}
 }
 
-
 int    drow(void *param)
 {
 	t_mlx *mlxx;
 
 	mlxx = (t_mlx *)param;
-
 	drow_player (*mlxx);
 	drow_mini_map(mlxx);
-	
 	mlx_put_image_to_window(mlxx->mlx, mlxx->mlx_win, mlxx->img.img, 0, 0);
 	return 0;
 }
