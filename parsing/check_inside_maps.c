@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:26:17 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 15:50:42 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:31:42 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ int check_inside_err(char **map, char sus)
         {
             if(map[i][j] == sus)
             {
-                if(map[i][j - 1] == 32 || map[i][j + 1] == 32 || map[i - 1][j] == 32 || map[i + 1][j] == 32)
-                {
-                    return (-1);
-                }
-                if(map[i][j - 1] == 0 || map[i][j + 1] == 0 || map[i - 1][j] == 0 || map[i + 1][j] == 0)
+                printf("%d\n", map[i][j]);
+                printf("%d\n", map[i][j + 1]);
+                printf("%d\n", map[i][j - 1]);
+                printf("%d\n", map[i + 1][j]);
+                printf("%d\n", map[i - 1][j]);
+                
+                if(map[i][j + 1] == 10 || map[i][j - 1] == 10 || map[i + 1][j] == 10 || map[i - 1][j] == 10)
                 {
                     return (-1);
                 }
             }
-            
             j++;
         }
         i++;
@@ -76,11 +77,11 @@ int open_zero(char **map) {
                     printf("i => %d | j=> %d\n", i, j);
                     return (-1);
                 }
-                if (map[i][j + 1] == ' ' || map[i][j - 1] == ' ')
+                if (map[i][j + 1] == ' ' || map[i][j - 1] == ' ' || map[i][j + 1] == 10 || map[i][j - 1] == 10)
                 {
                     return (-1);
                 }
-                if ((map[i + 1][j] && map[i + 1][j] == ' ')  || (map[i - 1][j] == ' ' && map[i - 1][j]))
+                if ((map[i + 1][j] && (map[i + 1][j] == ' ' || map[i + 1][j] == 10))  || (map[i - 1][j] == ' ' && (map[i - 1][j] || map[i - 1][j] == 10)))
                 {
                     return (-1);
                 }
@@ -164,6 +165,7 @@ int space_sus(char **map)
     {
         return (-1);
     }
+   
     // int x = check_inside_err(map, '0');
     int y = open_zero(map);
     if(y != 0)

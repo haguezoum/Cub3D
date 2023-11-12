@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:37:20 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 15:45:58 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:21:23 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int ft_isspace(char c)
     return (0);
 }
 
-// check if line end wirh .xmp
+
 int extention(char *line)
 {
     int i;
@@ -104,4 +104,3 @@ int extention(char *line)
         return (0);
     return (-1);
 }
-//for all function return 0 if success and -1 if not

@@ -6,7 +6,7 @@
 #    By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 18:10:05 by abdel-ou          #+#    #+#              #
-#    Updated: 2023/11/11 18:57:29 by haguezou         ###   ########.fr        #
+#    Updated: 2023/11/12 16:23:06 by haguezou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,8 @@ SRC=	main.c drow_line.c \
 		texture.c \
 		./parsing/check_inside_maps.c \
 	    ./parsing/parse.c ./parsing/new_parse.c \
-		./parsing/parse_params.c ./parsing/utils_functions.c 
-
-
+		./parsing/parse_params.c ./parsing/utils_functions.c \
+		./parsing/utils_functions2.c
 
 INCLUDES= -I /usr/include
 

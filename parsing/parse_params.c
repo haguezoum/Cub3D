@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:38:30 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 15:26:58 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:12:29 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void process_texture_line(char *line, t_mlx *mlxx, int *count)
     }
     else if (ft_isalpha(line[0]))
     {
-        printf("Unknown Texture\n");
+        printf("Error\n");
         exit(0);
     }
 

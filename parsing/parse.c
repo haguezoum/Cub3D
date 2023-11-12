@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:23:24 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 14:22:34 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:27:03 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,21 +95,23 @@ char **validate_and_return_map(char **whole_map, t_mlx *mlxx)
     if (store_param_ == 6 && check_path_ == 0)
     {
         mapy = pure_map(whole_map);
-
-        if (inside_map(mapy) == -1)
+        if(!mapy)
         {
-            printf("Bad Map\n");
+            free_double(whole_map); 
+            return NULL;
+        }
+        if (inside_map(mapy) == -1)
+        {   
+            free_double(mapy);
             return NULL;
         }
         else
         {
-            printf("Good Map\n");
             return mapy;
         }
     }
     else
     {
-        printf(">>>%d | %d<<<\n", store_param_, check_path_);
         printf("Bad Map params not completed\n");
         return NULL;
     }
@@ -118,11 +120,16 @@ char **validate_and_return_map(char **whole_map, t_mlx *mlxx)
 char **cube3d_full_map(char *arg, t_mlx *mlxx)
 {
     char **whole_map = read_and_store_map(arg, mlxx);
-
+    char **validate_and_return_map_;
+    
     if (whole_map == NULL)
     {
         return NULL;
     }
-
-    return validate_and_return_map(whole_map, mlxx);
+    validate_and_return_map_ = validate_and_return_map(whole_map, mlxx);
+    if(validate_and_return_map_ == NULL)
+    {
+        return NULL;
+    }
+    return (validate_and_return_map_);
 }

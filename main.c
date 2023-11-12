@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 15:47:03 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:11:31 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	mlxx.map = cube3d_full_map(argv[1], &mlxx);
+	if(mlxx.map == NULL)
+		return (0);
 		init_param(&mlxx, argv[1]);
 	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 	mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);
