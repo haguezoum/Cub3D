@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 16:11:31 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:32:36 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,14 @@ void	init_param(t_mlx *mlxx, char *file_name)
 	mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx->w_weight, mlxx->w_height);
 	mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel,
 			&mlxx->img.line_length, &mlxx->img.endian);
-	mlxx->color1 = load_color(mlxx, "./texture/wall_40_1.xpm");
-	mlxx->color2 = load_color(mlxx, "./texture/wall_40_2.xpm");
-	mlxx->color3 = load_color(mlxx, "./texture/wall_40_3.xpm");
-	mlxx->color4 = load_color(mlxx, "./texture/wall_40_4.xpm");
+	mlxx->color1 = load_color(mlxx, mlxx->NO_path);
+	mlxx->color2 = load_color(mlxx, mlxx->EA_path);
+	mlxx->color3 = load_color(mlxx, mlxx->WE_path);
+	mlxx->color4 = load_color(mlxx, mlxx->SO_path);
+	free(mlxx->NO_path);
+	free(mlxx->EA_path);
+	free(mlxx->WE_path);
+	free(mlxx->SO_path);
 }
 
 int	main(int argc, char **argv)

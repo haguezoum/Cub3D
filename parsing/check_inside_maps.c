@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:26:17 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 18:31:42 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:10:38 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,6 @@ int check_inside_err(char **map, char sus)
     return (0);
 }
 
-int table_counter(char **tab)
-{
-    int count;
-
-    count = 0;
-    if (!tab)
-        return (0);
-    while(tab[count])
-        count++;
-    return(count);
-}
-
 int open_zero(char **map) {
     int i = 0;
     int j = 0;
@@ -74,7 +62,6 @@ int open_zero(char **map) {
                     return (-1);
                 if (j >= (int)ft_strlen(map[i + 1])  || j >= (int)ft_strlen(map[i - 1]) )
                 {
-                    printf("i => %d | j=> %d\n", i, j);
                     return (-1);
                 }
                 if (map[i][j + 1] == ' ' || map[i][j - 1] == ' ' || map[i][j + 1] == 10 || map[i][j - 1] == 10)
@@ -92,40 +79,6 @@ int open_zero(char **map) {
     }
 
     return 0;
-}
-
-int player_position_count(char **map)
-{
-    int i;
-    int j;
-    int count;
-    i = 0;
-    j = 0;
-    count = 0;
-    
-    while(map[i])
-    {
-        j = 0;
-        while(map[i][j])
-        {
-            if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
-            {
-                count++;
-            }
-            j++;
-        }
-        i++;
-    }
-    if(count > 1 || count == 0)
-    {
-        return (-1);
-    }
-    return (0);
-}
-
-int is_valid_char(char c) 
-{
-    return (c == '0' || c == '1' || c == 'S' || c == 'N' || c == 'W' || c == 'E' || c == '\n' || c == ' ');
 }
 
 int main_units(char **map) 
@@ -186,16 +139,19 @@ int inside_map(char **map)
     if(main_units(map) == -1)
     {
         write(2, err_msg1, ft_strlen(err_msg1));
+        free_double(map);
         return (-1);
     }
     if (space_sus(map) == -1)
     {
         write(2, err_msg2 , ft_strlen(err_msg2));
+        free_double(map);
         return (-1);
     }
     if(player_position_count(map) == -1)
     {
         write(2, "Error\nMap accept only 1 player position no more no less !\n", 59);
+        free_double(map);
         return (-1);   
     }
 

@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:38:30 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 17:12:29 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:24:13 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int check_comma(char *str)
 
 void process_texture_line(char *line, t_mlx *mlxx, int *count)
 {
+    
     if (ft_strncmp("NO ", line, 3) == 0)
         mlxx->NO_path = ft_strtrim(param(line, count), " \n");
     else if (ft_strncmp("SO ", line, 3) == 0)
@@ -76,9 +77,8 @@ void process_texture_line(char *line, t_mlx *mlxx, int *count)
     else if (ft_isalpha(line[0]))
     {
         printf("Error\n");
-        exit(0);
+        return ;
     }
-
 }
 
 int store_params(char **map, t_mlx *mlxx)
@@ -101,8 +101,7 @@ int store_params(char **map, t_mlx *mlxx)
         c_count++;
     if (mlxx->F_color != -1)
         f_count++;
-
-    if (c_count != 1 || f_count != 1)
+    if (c_count != 1 || f_count != 1 || mlxx->C_color <= 0 || mlxx->F_color <= 0)
     {
         return (-1);
     }

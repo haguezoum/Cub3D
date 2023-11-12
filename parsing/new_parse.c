@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:18:09 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/11 16:07:35 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:41:43 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,16 @@ int get_map_height(int fd)
     return height;
 }
 
+
 long create_hexa(char *RGB)
 {  
    int r;
    int g;
    int b;
+   char *r_;
+   char *g_;
+   char *b_;
+   
    char **rgb;
 
    r = 0;
@@ -42,13 +47,18 @@ long create_hexa(char *RGB)
 	if(check_rgb_count(rgb) == -1 || check_comma(RGB) == -1)
 	{
 		printf("ERROR\nRGB error");
-		// return (-1);
-		exit(0);
+        free_double(rgb);
+		return (-1);
 	}
-   r = cube_atoi(ft_strtrim(rgb[0], "\n"));
-   g = cube_atoi(ft_strtrim(rgb[1], "\n"));
-   b = cube_atoi(ft_strtrim(rgb[2], "\n"));
-//    free(rgb);
+    
+    r_ = ft_strtrim(rgb[0], "\n");
+    g_ = ft_strtrim(rgb[1], "\n");
+    b_ = ft_strtrim(rgb[2], "\n");
+    
+   r = cube_atoi(r_);
+   g = cube_atoi(g_);
+   b = cube_atoi(b_);
+   free_double(rgb);
    if(r == -1 || g == -1 || b == -1)
    {
 	   printf("ERROR \nRGB not right!");
@@ -84,7 +94,6 @@ char **pure_map(char **map)
     {
         if(j > 0)
         {
-            // check \n inside map, if yes return error and enythig else than 01NNSWE
             if(ft_strncmp("\n", ft_strtrim(map[i], " "), 1) == 0 || ft_strchr("012NEWS", ft_strtrim(map[i], " ")[0]) == 0)
             {
                 printf("Error\nMap is not valid !\n");

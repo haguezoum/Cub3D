@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 18:28:00 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:25:22 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,7 @@ typedef struct s_linkedlist
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 char	**memory_allocete(char *file_name);
 void	draw_line(int p1_x, int p1_y, int p2_y, int color, t_mlx *mlxx);
-// char	*get_next_line(int fd, int buffers);
-// int		ft_strlen(char *str);
-// char	*ft_strdup(char *str);
 int		check_new_line(char *str);
-// char	*ft_strjoin(char *str1, char *str2);
-// char	*ft_substr(char *s, int start, size_t len);
 char	**load_map(char *file_name);
 void	drow_square(int startx, int starty, t_data img, int color);
 void	drow_player(t_mlx mlxx);
@@ -99,13 +94,12 @@ t_point	horizontal_ray(t_mlx *mlxx, double angle);
 t_point	vertical_ray(t_mlx *mlxx, double angle);
 void	drow_rays(t_mlx *mlxx, double angle, int color);
 void	scan(t_mlx *mlxx, double angle, int i);
-// void	drow_mini_map(t_mlx *mlxx);
+
 unsigned int *load_color(t_mlx *mlx, char *path);
 void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, t_mlx *mlxx, int tmp_wall_h);
 void	drow_mini_map(t_mlx	*mlxx);
 int check_if_wall(char **map, int x, int y);
-// just for test or visualisation the grid
-// void	drow_grid(t_mlx *mlxx);
+
 
 //Parsing functions
 
@@ -126,9 +120,6 @@ int read_params(t_linkedlist *list);
 
 // check inside maps file 
 int ft_isspace(char c);
-int	cube_atoi(const char *str);
-
-// parse params file
 char *param(char *path, int *count);
 int check_rgb_count(char **rgb);
 int check_comma(char *str);
@@ -140,7 +131,7 @@ long create_hexa(char *RGB);
 char **pure_map(char **map);
 
 //  utils functions 
-int	cube_atoi(const char *str);
+int	cube_atoi(char *str);
 int check_map_name(char *map_name);
 int check_path(t_mlx *mlxx);
 int extention(char *line);
@@ -149,4 +140,6 @@ int extention(char *line);
 void free_double(char **double_char_pointer);
 int table_counter(char **tab);
 int player_in_border(char **map);
+int is_valid_char(char c);
+int player_position_count(char **map);
 #endif
