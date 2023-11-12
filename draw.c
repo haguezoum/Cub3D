@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 18:22:53 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:56:11 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ void	scan(t_mlx *mlxx, double angle, int i)
 	draw_line(i, 0 ,(mlxx->w_height / 2) , mlxx->C_color, mlxx);
 	draw_line(i,(mlxx->w_height / 2), mlxx->w_height , mlxx->F_color, mlxx);
 	if (mlxx->color_select == 1)
-		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color1, mlxx, tmp_wall_h);
+		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->color1, mlxx, tmp_wall_h);
 	if (mlxx->color_select == 2)
-		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color2, mlxx, tmp_wall_h);
+		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->color2, mlxx, tmp_wall_h);
 	if (mlxx->color_select == 3)
-		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color3, mlxx, tmp_wall_h);
+		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->color3, mlxx, tmp_wall_h);
 	if (mlxx->color_select == 4)
-		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color4, mlxx, tmp_wall_h);
+		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->color4, mlxx, tmp_wall_h);
 }
 
 void	drow_player(t_mlx mlxx)

@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 18:23:24 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:48:04 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void draw_line(int x0, int y0, int y1, int color, t_mlx *mlxx)
     }
 }
 
-void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color,t_mlx *mlxx, int tmp_wall_h)
+void draw_line_x(int x0, int y0, int y1, unsigned int *color,t_mlx *mlxx, int tmp_wall_h)
 {
-   
+
     int i = 0;
     int steps = abs(y1 - y0);
     double y_increment = (y1 - y0) / (double)steps;
@@ -49,7 +49,7 @@ void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color,t_mlx *
         
         
         if (x0 >= 0 && x0 < mlxx->w_weight && conter >= 0 && conter < mlxx->w_height && colors < 1600)
-            my_mlx_pixel_put(&img, round(x0), round(conter), color[colors]); 
+            my_mlx_pixel_put(&mlxx->img, round(x0), round(conter), color[colors]); 
         conter += y_increment;
         ii -= coff;
         i++;
@@ -64,7 +64,7 @@ void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color,t_mlx *
         
         
         if (x0 >= 0 && x0 < mlxx->w_weight && conter >= 0 && conter < mlxx->w_height && colors < 1600)
-            my_mlx_pixel_put(&img, round(x0), round(conter), color[colors]);
+            my_mlx_pixel_put(&mlxx->img, round(x0), round(conter), color[colors]);
         conter -= y_increment;
         ii += coff;
         i++;

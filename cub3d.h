@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 18:28:00 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:48:37 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	drow_rays(t_mlx *mlxx, double angle, int color);
 void	scan(t_mlx *mlxx, double angle, int i);
 // void	drow_mini_map(t_mlx *mlxx);
 unsigned int *load_color(t_mlx *mlx, char *path);
-void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, t_mlx *mlxx, int tmp_wall_h);
+void draw_line_x(int x0, int y0, int y1, unsigned int *color, t_mlx *mlxx, int tmp_wall_h);
 void	drow_mini_map(t_mlx	*mlxx);
 int check_if_wall(char **map, int x, int y);
 // just for test or visualisation the grid
