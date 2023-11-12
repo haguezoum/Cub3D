@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 10:54:35 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 13:22:47 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ void	drow_rays(t_mlx *mlxx, double angle, int color)
 
     double z = 0;
     while (z < 2 * M_PI) {
-        int xx = x + (length * cos(angle + z)) + 50;
-        int yy = y + (length * sin(angle + z)) + 50;
-        my_mlx_pixel_put(&mlxx->img, xx, yy, color);
+        int xx = x + (length * cos(angle + z));
+        int yy = y + (length * sin(angle + z));
+		
+        my_mlx_pixel_put(&mlxx->img, xx, yy, color);	
         z += 0.1;
     }
 }
