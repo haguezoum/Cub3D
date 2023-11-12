@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 17:53:13 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:23:24 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
 void draw_line(int x0, int y0, int y1, int color, t_mlx *mlxx)
 {
     int steps = abs(y1 - y0);
-    
-
     double y_increment = (y1 - y0) / (double)steps;
-
     int i = 0;
     while (i <= steps)
     {
@@ -37,18 +34,18 @@ void draw_line(int x0, int y0, int y1, int color, t_mlx *mlxx)
     }
 }
 
-void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, int x_offset, t_mlx *mlxx, int tmp_wall_h)
+void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color,t_mlx *mlxx, int tmp_wall_h)
 {
+   
     int i = 0;
     int steps = abs(y1 - y0);
     double y_increment = (y1 - y0) / (double)steps;
-    // x_offset = x_offset * 10;
     double conter = mlxx->w_height / 2;
     float coff = 40.0 / (tmp_wall_h);
     float ii = coff * (tmp_wall_h / 2);
     while (i <= (steps / 2))
     {
-        int colors = (int)ii * 40 + x_offset;
+        int colors = (int)ii * 40 + mlxx->x_offset;
         
         
         if (x0 >= 0 && x0 < mlxx->w_weight && conter >= 0 && conter < mlxx->w_height && colors < 1600)
@@ -63,7 +60,7 @@ void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, int x_
     
       while (i <= (steps / 2))
     {
-        int colors = (int)ii * 40 + x_offset;
+        int colors = (int)ii * 40 + mlxx->x_offset;
         
         
         if (x0 >= 0 && x0 < mlxx->w_weight && conter >= 0 && conter < mlxx->w_height && colors < 1600)
