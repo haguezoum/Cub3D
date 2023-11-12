@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:04 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:45:36 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ int	click_key(int key, t_mlx *mlxx)
 		mlxx->angle += 2 * M_PI;
 	if (mlxx->angle > 2 * M_PI)
 		mlxx->angle -= 2 * M_PI;
-	
-
 	
 	mlx_destroy_image(mlxx->mlx, mlxx->img.img);	
 			mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx-> w_weight, mlxx->w_height);
