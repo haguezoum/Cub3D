@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/01 18:23:33 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:32:18 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,24 @@ void	player_int(t_mlx *mlxx)
 
 	i = 0;
 	j = 0;
-	while (i < 9)
+	while (mlxx->map[i])
 	{
-		while (j < 18)
+		while (mlxx->map[i][j])
 		{
-			if (mlxx->map[i][j] && mlxx->map[i][j] == 'p')
+			if (mlxx->map[i][j] == 'N' || mlxx->map[i][j] == 'S' ||
+				mlxx->map[i][j] == 'E' || mlxx->map[i][j] == 'W')
 			{
 				mlxx->player_y = i * 40 + 20;
 				mlxx->player_x = j * 40 + 20;
 			}
+			if (mlxx->map[i][j] == 'N')
+				mlxx->angle = 90 * (M_PI / 180);
+			if (mlxx->map[i][j] == 'S')
+				mlxx->angle = 270 * (M_PI / 180);
+			if (mlxx->map[i][j] == 'E')
+				mlxx->angle = 0 * (M_PI / 180);
+			if (mlxx->map[i][j] == 'W')
+				mlxx->angle = 180 * (M_PI / 180);
 			j++;
 		}
 		j = 0;
@@ -35,28 +44,23 @@ void	player_int(t_mlx *mlxx)
 	}
 }
 
+
 void	init_param(t_mlx *mlxx, char *file_name)
 {
 	int	fd;
 
 	fd = open(file_name, O_RDONLY, 0);
-	mlxx->height = 1;
-	mlxx->weight = 0;
-	mlxx->angle = 90 * (M_PI / 180);
-	mlxx->weight = ft_strlen(get_next_line(fd, 1)) - 1;
-	while (get_next_line(fd, 1))
-		mlxx->height++;
-	mlxx->weight = 1280;
-	mlxx->height = 720;
-	mlxx->map = load_map(file_name);
+	mlxx->w_weight = 1280;
+	mlxx->w_height = 720;
+
 	player_int(mlxx);
 	mlxx->mlx = mlx_init();
-	mlxx->mlx_win = mlx_new_window(mlxx->mlx, mlxx->weight,
-			mlxx->height, "cub");
-	mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx-> weight, mlxx->height);
+	mlxx->mlx_win = mlx_new_window(mlxx->mlx, mlxx->w_weight,
+			mlxx->w_height, "cub");
+	mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx->w_weight, mlxx->w_height);
 	mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel,
 			&mlxx->img.line_length, &mlxx->img.endian);
-	mlxx->color1 = load_color(mlxx, "/Users/abdel-ou/Desktop/wall_40.xpm");
+	mlxx->color1 = load_color(mlxx, "./texture/wall_40_1.xpm");
 	mlxx->color2 = load_color(mlxx, "./texture/wall_40_2.xpm");
 	mlxx->color3 = load_color(mlxx, "./texture/wall_40_3.xpm");
 	mlxx->color4 = load_color(mlxx, "./texture/wall_40_4.xpm");
@@ -67,6 +71,7 @@ int	main(int argc, char **argv)
 	t_mlx	mlxx;
 
 	if (argc > 1)
+	mlxx.map = cube3d_full_map(argv[1], &mlxx);
 		init_param(&mlxx, argv[1]);
 	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 	mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);

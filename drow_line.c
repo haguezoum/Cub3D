@@ -6,12 +6,11 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/01 19:11:55 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/11 11:09:04 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -43,7 +42,7 @@ void draw_line(int x0, int y0, int x1, int y1, t_data img, int color, t_mlx *mlx
     int i = 0;
     while (i <= steps)
     {
-         if (x >= 0 && x < mlxx->weight && y >= 0 && y < mlxx->height)
+         if (x >= 0 && x < mlxx->w_weight && y >= 0 && y < mlxx->w_height)
             my_mlx_pixel_put(&img, round(x), round(y), color);
         x += x_increment;
         y += y_increment;
@@ -56,11 +55,8 @@ void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, int x_
     int i = 0;
     int steps = abs(y1 - y0);
     double y_increment = (y1 - y0) / (double)steps;
-    
-
-
-   
-    double conter = mlxx->height / 2;
+    // x_offset = x_offset * 10;
+    double conter = mlxx->w_height / 2;
     float coff = 40.0 / (tmp_wall_h);
     float ii = coff * (tmp_wall_h / 2);
     while (i <= (steps / 2))
@@ -68,14 +64,14 @@ void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, int x_
         int colors = (int)ii * 40 + x_offset;
         
         
-        if (x0 >= 0 && x0 < mlxx->weight && conter >= 0 && conter < mlxx->height && colors < 1600)
+        if (x0 >= 0 && x0 < mlxx->w_weight && conter >= 0 && conter < mlxx->w_height && colors < 1600)
             my_mlx_pixel_put(&img, round(x0), round(conter), color[colors]); // center to top ray
-        conter -= y_increment;
+        conter += y_increment;
         ii -= coff;
         i++;
     }
         i = 0;
-         conter = mlxx->height / 2;
+         conter = mlxx->w_height / 2;
         ii = coff * (tmp_wall_h / 2);
     
       while (i <= (steps / 2))
@@ -83,9 +79,9 @@ void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, int x_
         int colors = (int)ii * 40 + x_offset;
         
         
-        if (x0 >= 0 && x0 < mlxx->weight && conter >= 0 && conter < mlxx->height && colors < 1600)
+        if (x0 >= 0 && x0 < mlxx->w_weight && conter >= 0 && conter < mlxx->w_height && colors < 1600)
             my_mlx_pixel_put(&img, round(x0), round(conter), color[colors]); // center to top ray
-        conter += y_increment;
+        conter -= y_increment;
         ii += coff;
         i++;
     }

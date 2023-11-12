@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:28:34 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/01 19:03:11 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/11 17:27:21 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ t_point	vertical_ray(t_mlx *mlxx, double angle)
 		x_intercept = (int)((mlxx->player_x / 40))*40;
 		y_intercept = mlxx->player_y + (x_intercept - mlxx->player_x) * tan(angle);
 	}
-	while (x_intercept >= 0 && x_intercept < 720
-		&&y_intercept >= 0 && y_intercept < 360)
+	while (check_if_wall(mlxx->map, (int)((y_intercept) / 40), (int)((x_intercept) / 40)) == 0)
 	{
 	if (mlxx->map[(int)(y_intercept / 40)][(int)(x_intercept / 40)] == '1'|| mlxx->map[(int)(y_intercept / 40) ][(int)(x_intercept / 40) - 1] == '1')
 		break;
@@ -45,14 +44,15 @@ t_point	vertical_ray(t_mlx *mlxx, double angle)
         y_intercept -= y_step; 
 	}
 	}
-	if (x_intercept <= 0 || x_intercept >= 720 || y_intercept <= 0
-		|| y_intercept >= 360)
-	{
-		v_point.x = 100000;
-		v_point.y = 100000;
-		return (v_point);
-	}
+	// if (x_intercept <= 0 || x_intercept >= (mlxx->w_weight) || y_intercept <= 0
+	// 	|| y_intercept >= (mlxx->w_height))
+	// {
+	// 	v_point.x = 10000000;
+	// 	v_point.y = 10000000;
+	// 	return (v_point);
+	// }
 	v_point.x = x_intercept;
 	v_point.y = y_intercept;
 	return (v_point);
 }
+

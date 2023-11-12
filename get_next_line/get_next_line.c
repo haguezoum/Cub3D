@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 11:07:26 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/05 11:21:27 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:44:56 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ char	*buckup_finder(char *line)
 	return (backup);
 }
 
-char	*get_next_line(int fd, int buffer_size)
-{
-	char		*line;
-	char		*buffer;
-	static char	*backup;
+// char	*get_next_line(int fd, int buffer_size)
+// {
+// 	char		*line;
+// 	char		*buffer;
+// 	static char	*backup;
 
-	if (fd < 0)
-		return (0);
-	buffer = (char *)malloc(sizeof(char ) * (buffer_size + 1));
-	if (!buffer)
-		return (0);
-	line = ft_big_line(fd, buffer, backup, buffer_size);
-	free(buffer);
-	if (!line)
-		return (0);
-	backup = buckup_finder(line);
-	return (line);
-}
+// 	if (fd < 0)
+// 		return (0);
+// 	buffer = (char *)malloc(sizeof(char ) * (buffer_size + 1));
+// 	if (!buffer)
+// 		return (0);
+// 	line = ft_big_line(fd, buffer, backup, buffer_size);
+// 	free(buffer);
+// 	if (!line)
+// 		return (0);
+// 	backup = buckup_finder(line);
+// 	return (line);
+// }

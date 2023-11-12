@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/01 18:17:03 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 09:58:13 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void scan(t_mlx *mlxx, double angle, int i)
         point.x = h_point.x;
         point.y = h_point.y;
 
-		point.x_offset = (int)h_point.x % 40;
+		point.x_offset = (int)h_point.x % 40 ;
 		if (angle > 0 && angle < M_PI)
 		{
 			point.color = 0xa2add0;
@@ -70,8 +70,10 @@ void scan(t_mlx *mlxx, double angle, int i)
 		}
     }
 	
+
+
 	
-	int distaproj = (mlxx->weight  / 2) / tan(M_PI / 6);
+	int distaproj = (mlxx->w_weight / 2) / tan(M_PI / 6);
 	double dist = distance(mlxx->player_x, mlxx->player_y, point.x, point.y);
 
 	// fish eye effect--------------------
@@ -79,25 +81,25 @@ void scan(t_mlx *mlxx, double angle, int i)
 		new_dest = dist * cos(mlxx->angle - angle);
 	else
 		new_dest = dist * cos(angle - mlxx->angle);
-	// -----------------------------------
+	// // -----------------------------------
 
 	int wall_h = (40 / new_dest) * distaproj;
 	int tmp_wall_h = wall_h;
-	if (wall_h > mlxx->height)
+	if (wall_h > mlxx->w_height)
 	{
-		wall_h = mlxx->height;
+		wall_h = mlxx->w_height;
 	}
-	draw_line(i, 0 , i, (mlxx->height / 2) , mlxx->img, 0x6fa8dc, mlxx);
-	draw_line(i,(mlxx->height / 2) , i, mlxx->height , mlxx->img, 0x999999, mlxx);
-	
+	draw_line(i, 0 , i, (mlxx->w_height / 2) , mlxx->img, mlxx->C_color, mlxx);
+	draw_line(i,(mlxx->w_height / 2) , i, mlxx->w_height , mlxx->img, mlxx->F_color, mlxx);
+	// point.x_offset *= 10;
 	if (mlxx->color_select == 1)
-		draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), (mlxx->height / 2) - (wall_h / 2), mlxx->img, mlxx->color1,  point.x_offset, mlxx, tmp_wall_h);
+		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color1,  point.x_offset, mlxx, tmp_wall_h);
 	if (mlxx->color_select == 2)
-		draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), (mlxx->height / 2) - (wall_h / 2), mlxx->img, mlxx->color2,  point.x_offset, mlxx, tmp_wall_h);
+		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color2,  point.x_offset, mlxx, tmp_wall_h);
 	if (mlxx->color_select == 3)
-		draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), (mlxx->height / 2) - (wall_h / 2), mlxx->img, mlxx->color3,  point.x_offset, mlxx, tmp_wall_h);
+		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color3,  point.x_offset, mlxx, tmp_wall_h);
 	if (mlxx->color_select == 4)
-		draw_line_x(i, (mlxx->height / 2) + (wall_h / 2), (mlxx->height / 2) - (wall_h / 2), mlxx->img, mlxx->color4,  point.x_offset, mlxx, tmp_wall_h);
+		draw_line_x(i, (mlxx->w_height / 2) + (wall_h / 2), (mlxx->w_height / 2) - (wall_h / 2), mlxx->img, mlxx->color4,  point.x_offset, mlxx, tmp_wall_h);
 	
 	
 }
@@ -105,7 +107,7 @@ void scan(t_mlx *mlxx, double angle, int i)
 void	drow_player(t_mlx mlxx)
 {	
 	double	angle = mlxx.angle - (M_PI / 6);
-	double inc = (M_PI / 3) / mlxx.weight;
+	double inc = (M_PI / 3) / mlxx.w_weight;
 	double send_angle = angle;
 	int i = 0;
 	mlxx.color_select = 1;

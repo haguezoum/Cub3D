@@ -4,7 +4,7 @@ C 171,154,137
 NO textures/simonkraft/bookshelf.xpm
 SO textures/simonkraft/bookshelf_01.xpm
 WE textures/simonkraft/bookshelf_02.xpm
-EAtextures/simonkraft/bookshelf_03.xpm
+EA textures/simonkraft/bookshelf_03.xpm
 
 1111111111111111111
 1001001001001001001
@@ -16,4 +16,3 @@ EAtextures/simonkraft/bookshelf_03.xpm
 1111000000000001111
 1000000101010000001
 1111111111111111111
-

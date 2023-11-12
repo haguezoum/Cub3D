@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/01 15:40:14 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 10:54:35 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,21 @@
 
 void	drow_rays(t_mlx *mlxx, double angle, int color)
 {
-	int	x;
-	int	y;
-	int	z ;
-	int	xx;
-	int	yy;
+  int x = mlxx->player_x / 4;
+    int y = mlxx->player_y / 4;
 
-	z = 1;
-	x = mlxx->player_x / 4;
-	y = mlxx->player_y / 4;
-	while (z < 50)
-	{
-		xx = x - (z * cos(angle));
-		yy = y - (z * sin(angle));
-		if (mlxx->map[(int)(yy / 10)][(int)(xx / 10)] == '1')
-		{
-			break ;
-		}
-		my_mlx_pixel_put(&mlxx->img, xx, yy, color);
-		z++;
-	}
+    
+    int length = 4;
+
+    double z = 0;
+    while (z < 2 * M_PI) {
+        int xx = x + (length * cos(angle + z)) + 50;
+        int yy = y + (length * sin(angle + z)) + 50;
+        my_mlx_pixel_put(&mlxx->img, xx, yy, color);
+        z += 0.1;
+    }
 }
+
 
 void	drow_square(int startx, int starty, t_data img, int color)
 {
@@ -43,7 +37,7 @@ void	drow_square(int startx, int starty, t_data img, int color)
 
 	i = 0;
 	j = 0;
-	startx = startx * 10;
+	startx = startx * 10 ;
 	starty = starty * 10;
 	while (j < 10)
 	{
@@ -64,9 +58,9 @@ void	drow_mini_map(t_mlx	*mlxx)
 
 	i = 0;
 	j = 0;
-	while (i < 9)
+	while (mlxx->map[i])
 	{
-		while (j < 18)
+		while (mlxx->map[i][j])
 		{
 			if (mlxx->map[i][j] == '1')
 				drow_square(j, i, mlxx->img, 0xffffff);
@@ -75,10 +69,12 @@ void	drow_mini_map(t_mlx	*mlxx)
 		j = 0;
 		i++;
 	}
-	my_mlx_pixel_put(&mlxx->img, mlxx->player_x / 4,
-		mlxx->player_y / 4, 0x00ff00);
+	// my_mlx_pixel_put(&mlxx->img, mlxx->player_x / 4,
+	// 	mlxx->player_y / 4, 0x00ff00);
+	my_mlx_pixel_put(&mlxx->img, 100,100, 0x00ff00);	
 	drow_rays(mlxx, mlxx->angle, 0x00ff00);
-	// for git color from the image
 }
+
+
 
 
