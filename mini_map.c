@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 14:11:06 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:26:33 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	drow_mini_map(t_mlx	*mlxx)
 	}
 	// my_mlx_pixel_put(&mlxx->img, mlxx->player_x / 4,
 	// 	mlxx->player_y / 4, 0x00ff00);
-	my_mlx_pixel_put(&mlxx->img, 100,100, 0x00ff00);	
+	// my_mlx_pixel_put(&mlxx->img, 100,100, 0x00ff00);	
 	drow_rays(mlxx, mlxx->angle, 0x00ff00);
 }
 
