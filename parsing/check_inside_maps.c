@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:26:17 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/11 17:13:23 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 15:50:42 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,6 @@ int space_sus(char **map)
     }
     // int x = check_inside_err(map, '0');
     int y = open_zero(map);
-    printf("y = %d\n", y);
     if(y != 0)
     {
         return (-1);

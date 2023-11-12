@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:38:30 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/11 21:42:09 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 15:26:58 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int check_comma(char *str)
 void process_texture_line(char *line, t_mlx *mlxx, int *count)
 {
     if (ft_strncmp("NO ", line, 3) == 0)
-        mlxx->NO_path = ft_strtrim(param(line, count), " ");
+        mlxx->NO_path = ft_strtrim(param(line, count), " \n");
     else if (ft_strncmp("SO ", line, 3) == 0)
-        mlxx->SO_path = ft_strtrim(param(line, count), " ");
+        mlxx->SO_path = ft_strtrim(param(line, count), " \n");
     else if (ft_strncmp("WE ", line, 3) == 0)
-        mlxx->WE_path = ft_strtrim(param(line, count), " ");
+        mlxx->WE_path = ft_strtrim(param(line, count), " \n");
     else if (ft_strncmp("EA ", line, 3) == 0)
-        mlxx->EA_path = ft_strtrim(param(line, count), " ");
+        mlxx->EA_path = ft_strtrim(param(line, count), " \n");
     else if (ft_strncmp("C ", line, 2) == 0)
     {
         mlxx->C_color = create_hexa(param(line, count));
@@ -78,6 +78,7 @@ void process_texture_line(char *line, t_mlx *mlxx, int *count)
         printf("Unknown Texture\n");
         exit(0);
     }
+
 }
 
 int store_params(char **map, t_mlx *mlxx)

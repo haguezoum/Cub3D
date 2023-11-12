@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:37:20 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 10:01:46 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 15:45:58 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,11 @@ int check_path(t_mlx *mlxx)
         // free double pointer
         return (-1);
     }
+    if(access(mlxx->EA_path, F_OK) == -1 || access(mlxx->SO_path, F_OK) == -1 || access(mlxx->WE_path, F_OK) == -1 || access(mlxx->NO_path, F_OK) == -1)
+    {
+        // free double pointer
+        return (-1);
+    }
     return (0);
 }
 
@@ -95,7 +100,7 @@ int extention(char *line)
     i = 0;
     while(line[i])
         i++;
-    if(line[i - 2] == 'm' && line[i - 3] == 'p' && line[i - 4] == 'x' && line[i - 5] == '.')
+    if(line[i - 1] == 'm' && line[i - 2] == 'p' && line[i - 3] == 'x' && line[i - 4] == '.')
         return (0);
     return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:23:24 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/11 21:57:13 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:22:34 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,12 @@ char **read_and_store_map(char *arg, t_mlx *mlxx)
 char **validate_and_return_map(char **whole_map, t_mlx *mlxx)
 {
     char **mapy;
+    int store_param_;
+    int check_path_;
 
-    if (store_params(whole_map, mlxx) == 6 && check_path(mlxx) == 0)
+    store_param_ =  store_params(whole_map, mlxx);
+    check_path_ = check_path(mlxx);
+    if (store_param_ == 6 && check_path_ == 0)
     {
         mapy = pure_map(whole_map);
 
@@ -105,6 +109,7 @@ char **validate_and_return_map(char **whole_map, t_mlx *mlxx)
     }
     else
     {
+        printf(">>>%d | %d<<<\n", store_param_, check_path_);
         printf("Bad Map params not completed\n");
         return NULL;
     }
