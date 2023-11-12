@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 12:26:31 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:53:36 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_linkedlist
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 char	**memory_allocete(char *file_name);
-void	draw_line(int p1_x, int p1_y, int p2_x, int p2_y, t_data img, int color, t_mlx *mlxx);
+void	draw_line(int p1_x, int p1_y, int p2_y, int color, t_mlx *mlxx);
 // char	*get_next_line(int fd, int buffers);
 // int		ft_strlen(char *str);
 // char	*ft_strdup(char *str);

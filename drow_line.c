@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:15:13 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 17:42:04 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:53:13 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,19 @@ void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void draw_line(int x0, int y0, int x1, int y1, t_data img, int color, t_mlx *mlxx)
+void draw_line(int x0, int y0, int y1, int color, t_mlx *mlxx)
 {
-   
     int steps = abs(y1 - y0);
     
-    double x_increment = (x1 - x0) / (double)steps;
+
     double y_increment = (y1 - y0) / (double)steps;
-    double y = y0;
 
     int i = 0;
     while (i <= steps)
     {
-         if (x0 >= 0 && x0 < mlxx->w_weight && y >= 0 && y < mlxx->w_height)
-            my_mlx_pixel_put(&img, round(x0), round(y), color);
-        x0 += x_increment;
-        y += y_increment;
+         if (x0 >= 0 && x0 < mlxx->w_weight && y0 >= 0 && y0 < mlxx->w_height)
+            my_mlx_pixel_put(&mlxx->img, round(x0), round(y0), color);
+        y0 += y_increment;
         i++;
     }
 }
