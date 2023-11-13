@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 12:50:17 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:03:44 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,11 @@ int	main(int argc, char **argv)
 	if (mlxx.map == NULL)
 		return (0);
 		init_param(&mlxx, argv[1]);
-	if(!mlxx.color1)
+	if(!mlxx.color1 || !mlxx.color2 || !mlxx.color3 || !mlxx.color4)
 	{
 		printf("Error mlx imag\n");
+		free_double(mlxx.map);
+		
 		exit(0);
 	}
 	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);

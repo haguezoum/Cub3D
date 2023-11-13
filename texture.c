@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:52:19 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 12:34:03 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:02:35 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ unsigned int	*load_color(t_mlx *mlx, char *path)
 	unsigned int	*img_data;
 
 	new = mlx_xpm_file_to_image(mlx->mlx, path, &height, &weight);
-	if (new == NULL)
-	{
+	if (new == NULL || height != 40 || weight != 40)
 		return (NULL);
-	}
-	
+	printf("width =>%d | height =>%d\n", weight, height);
 	img_data = (unsigned int *)mlx_get_data_addr(new,
 			&weight, &size_line, &endian);
 	return (img_data);
