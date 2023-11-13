@@ -6,7 +6,7 @@
 #    By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 18:10:05 by abdel-ou          #+#    #+#              #
-#    Updated: 2023/11/13 07:36:18 by abdel-ou         ###   ########.fr        #
+#    Updated: 2023/11/13 10:24:28 by abdel-ou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ FLAGS= -ffast-math -Wall -Wextra -Werror -fsanitize=address -g
 
 SRC=	main.c drow_line.c \
 		load_map.c draw.c key_hook.c  horizontal_rays.c vertical_ray.c mini_map.c \
-		texture.c \
+		texture.c draw_util.c\
 		./parsing/check_inside_maps.c \
 	    ./parsing/parse.c ./parsing/new_parse.c \
 		./parsing/parse_params.c ./parsing/utils_functions.c \
-		./parsing/utils_functions2.c
+		./parsing/utils_functions2.c 
 
 INCLUDES= -I /usr/include
 

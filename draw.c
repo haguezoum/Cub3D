@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 08:56:31 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 08:23:20 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:23:14 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,69 +24,47 @@ double	distance(int x1, int y1, int x2, int y2)
 	return (z);
 }
 
-void	scan(t_mlx *mlxx, double angle, int i)
+t_point	closest_p(t_point h_point, t_point v_point, t_mlx *mlxx, double angle)
 {
-    t_point h_point = horizontal_ray(mlxx, angle);
-    t_point v_point = vertical_ray(mlxx, angle);
-    t_point point;
-	
-   	double new_dest;
+	t_point	point;
 
-    if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y) <
-        	 distance(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y) )
-    {
-        point.x = h_point.x;
-        point.y = h_point.y;
+	if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y)
+		< distance(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y))
+	{
+		point.x = h_point.x;
+		point.y = h_point.y;
 		mlxx->x_offset = (int)h_point.x % 40 ;
 		if (angle > 0 && angle < M_PI)
-		{
 			mlxx->color_select = 1;
-		}
 		else
-		{
 			mlxx->color_select = 2;
-		}
-    }
-    if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y) >
-         distance(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y))
-    {
-        point.x = v_point.x;
-        point.y = v_point.y;
-		
+	}
+	if (distance(mlxx->player_x, mlxx->player_y, h_point.x, h_point.y)
+		> distance(mlxx->player_x, mlxx->player_y, v_point.x, v_point.y))
+	{
+		point.x = v_point.x;
+		point.y = v_point.y;
 		mlxx->x_offset = (int)v_point.y % 40;
-		
 		if (angle > M_PI / 2 && angle < (3 * M_PI) / 2)
-		{
 			mlxx->color_select = 3;
-		}
 		else
-		{
 			mlxx->color_select = 4;
-		}
-    }
-	int distaproj = (mlxx->w_weight / 2) / tan(M_PI / 6);
-	double dist = distance(mlxx->player_x, mlxx->player_y, point.x, point.y);
+	}
+	return (point);
+}
 
-	if (mlxx->angle > angle)
-		new_dest = dist * cos(mlxx->angle - angle);
-	else
-		new_dest = dist * cos(angle - mlxx->angle);
-	int wall_h = (40 / new_dest) * distaproj;
-	int tmp_wall_h = wall_h;
-	if (wall_h > mlxx->w_height)
-		wall_h = mlxx->w_height;
-	mlxx->wall_h = wall_h;
-	
-	draw_line(i, 0, mlxx->C_color, mlxx);
-	draw_line(i, 1, mlxx->F_color, mlxx);
-	if (mlxx->color_select == 1)
-		draw_line_x(i,  mlxx->color1, mlxx, tmp_wall_h);
-	if (mlxx->color_select == 2)
-		draw_line_x(i,  mlxx->color2, mlxx, tmp_wall_h);
-	if (mlxx->color_select == 3)
-		draw_line_x(i, mlxx->color3, mlxx, tmp_wall_h);
-	if (mlxx->color_select == 4)
-		draw_line_x(i, mlxx->color4, mlxx, tmp_wall_h);
+void	scan(t_mlx *mlxx, double angle, int i)
+{
+	t_point	h_point;
+	t_point	v_point;
+	t_point	point;
+	int		tmp_wall_h;
+
+	h_point = horizontal_ray(mlxx, angle);
+	v_point = vertical_ray(mlxx, angle);
+	point = closest_p(h_point, v_point, mlxx, angle);
+	tmp_wall_h = find_wall_h(mlxx, angle, point);
+	draw_all(i, mlxx, tmp_wall_h);
 }
 
 void	drow_player(t_mlx mlxx)

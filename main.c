@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 07:35:46 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:26:06 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	init_param(t_mlx *mlxx, char *file_name)
 	fd = open(file_name, O_RDONLY, 0);
 	mlxx->w_weight = 1280;
 	mlxx->w_height = 720;
-
 	player_int(mlxx);
 	mlxx->mlx = mlx_init();
 	mlxx->mlx_win = mlx_new_window(mlxx->mlx, mlxx->w_weight,

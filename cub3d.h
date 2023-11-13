@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 08:23:59 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:25:36 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,9 @@ unsigned int *load_color(t_mlx *mlx, char *path);
 void draw_line_x(int x0,unsigned int *color, t_mlx *mlxx, int tmp_wall_h);
 void	drow_mini_map(t_mlx	*mlxx);
 int check_if_wall(char **map, int x, int y);
+void	draw_all(int i, t_mlx *mlxx, int tmp_wall_h);
+int	find_wall_h(t_mlx *mlxx, double angle, t_point point);
+double	distance(int x1, int y1, int x2, int y2);
 // just for test or visualisation the grid
 // void	drow_grid(t_mlx *mlxx);
 
