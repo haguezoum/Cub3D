@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 10:28:51 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:29:34 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	main(int argc, char **argv)
 {
 	t_mlx	mlxx;
 
+	if (argc > 1)
 	mlxx.map = cube3d_full_map(argv[1], &mlxx);
 	if(mlxx.map == NULL)
 		return (0);
