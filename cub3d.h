@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 22:25:22 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:43:50 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,53 +34,49 @@ typedef struct s_data
 
 typedef struct s_point
 {
-	float	x;
-	float	y;
-	float	x_offset;
-	float 	y_offset;
-	char 	type;
-	int		color;
-	unsigned int *color_array;
+	float			x;
+	float			y;
+	float			x_offset;
+	float			y_offset;
+	char			type;
+	int				color;
+	unsigned int	*color_array;
 }t_point;
 
 typedef struct s_mlx
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-	char	**map;
-	float	player_x;
-	float	player_y;
-	float	wall_x;
-	float	wall_y;
-	double	angle;
-	float	x_offset;
-	// int		m_height;
-	// int		m_weight;
-	int		w_height;
-	int		w_weight;
-	int		color_select;
-	unsigned int *color1;
-	unsigned int *color2;
-	unsigned int *color3;
-	unsigned int *color4;
-	char *WE_path;
-	char *EA_path;
-	char *NO_path;
-	char *SO_path;
-	long F_color;
-	long C_color;
+	void			*mlx;
+	void			*mlx_win;
+	t_data			img;
+	char			**map;
+	float			player_x;
+	float			player_y;
+	float			wall_x;
+	float			wall_y;
+	int				wall_h;
+	double			angle;
+	float			x_offset;
+	int				w_height;
+	int				w_weight;
+	int				color_select;
+	unsigned int	*color1;
+	unsigned int	*color2;
+	unsigned int	*color3;
+	unsigned int	*color4;
+	char			*WE_path;
+	char			*EA_path;
+	char			*NO_path;
+	char			*SO_path;
+	long			F_color;
+	long			C_color;
 }t_mlx;
-
-typedef struct s_linkedlist
-{
-	char *line;
-	struct s_linkedlist *next;
-}t_linkedlist;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 char	**memory_allocete(char *file_name);
-void	draw_line(int p1_x, int p1_y, int p2_y, int color, t_mlx *mlxx);
+void	draw_line(int p1_x, int x, int color, t_mlx *mlxx);
+// char	*get_next_line(int fd, int buffers);
+// int		ft_strlen(char *str);
+// char	*ft_strdup(char *str);
 int		check_new_line(char *str);
 char	**load_map(char *file_name);
 void	drow_square(int startx, int starty, t_data img, int color);
@@ -96,27 +92,21 @@ void	drow_rays(t_mlx *mlxx, double angle, int color);
 void	scan(t_mlx *mlxx, double angle, int i);
 
 unsigned int *load_color(t_mlx *mlx, char *path);
-void draw_line_x(int x0, int y0, int y1, t_data img, unsigned int *color, t_mlx *mlxx, int tmp_wall_h);
+void draw_line_x(int x0,unsigned int *color, t_mlx *mlxx, int tmp_wall_h);
 void	drow_mini_map(t_mlx	*mlxx);
 int check_if_wall(char **map, int x, int y);
-
+void	draw_all(int i, t_mlx *mlxx, int tmp_wall_h);
+int	find_wall_h(t_mlx *mlxx, double angle, t_point point);
+double	distance(int x1, int y1, int x2, int y2);
+int exit_key(t_mlx *mlxx);
+// just for test or visualisation the grid
+// void	drow_grid(t_mlx *mlxx);
 
 //Parsing functions
 
 char **cube3d_full_map(char* arg, t_mlx *mlxx);
-int surrounded_by_walls(char **map);
-int skip_spaces(char *str, int *i);
-int height_map(char **map);
 int inside_map(char **map);
-void visualition(char **map, int height);
-int height_map(char **map);
-int read_map_params(char *map);
-int line_len(char *line);
 int check_map_name(char *map_name);
-int empty_line(char *line);
-int count_line(char **map); //tmp
-int read_params(t_linkedlist *list);
-
 
 // check inside maps file 
 int ft_isspace(char c);
@@ -139,7 +129,7 @@ int extention(char *line);
 //  utils functions 2
 void free_double(char **double_char_pointer);
 int table_counter(char **tab);
-int player_in_border(char **map);
 int is_valid_char(char c);
 int player_position_count(char **map);
+
 #endif

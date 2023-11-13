@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:26:17 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 21:10:38 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:30:36 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ int check_inside_err(char **map, char sus)
         {
             if(map[i][j] == sus)
             {
-                printf("%d\n", map[i][j]);
-                printf("%d\n", map[i][j + 1]);
-                printf("%d\n", map[i][j - 1]);
-                printf("%d\n", map[i + 1][j]);
-                printf("%d\n", map[i - 1][j]);
-                
                 if(map[i][j + 1] == 10 || map[i][j - 1] == 10 || map[i + 1][j] == 10 || map[i - 1][j] == 10)
                 {
                     return (-1);
@@ -96,7 +90,6 @@ int main_units(char **map)
         {
             if (!is_valid_char(map[i][j])) 
             {
-                printf("Invalid character at map[%d][%d]:%c => %d\n", i, j, map[i][j], map[i][j]);
                 return -1;
             }
             j++;

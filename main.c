@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 12:18:46 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:50:17 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	player_int(t_mlx *mlxx)
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
-	while (mlxx->map[i])
+	i = -1;
+	while (mlxx->map[++i])
 	{
-		while (mlxx->map[i][j])
+		j = -1;
+		while (mlxx->map[i][++j])
 		{
 			if (mlxx->map[i][j] == 'N' || mlxx->map[i][j] == 'S' ||
 				mlxx->map[i][j] == 'E' || mlxx->map[i][j] == 'W')
@@ -37,13 +37,9 @@ void	player_int(t_mlx *mlxx)
 				mlxx->angle = 0 * (M_PI / 180);
 			if (mlxx->map[i][j] == 'W')
 				mlxx->angle = 180 * (M_PI / 180);
-			j++;
 		}
-		j = 0;
-		i++;
 	}
 }
-
 
 void	init_param(t_mlx *mlxx, char *file_name)
 {
@@ -52,7 +48,6 @@ void	init_param(t_mlx *mlxx, char *file_name)
 	fd = open(file_name, O_RDONLY, 0);
 	mlxx->w_weight = 1280;
 	mlxx->w_height = 720;
-
 	player_int(mlxx);
 	mlxx->mlx = mlx_init();
 	mlxx->mlx_win = mlx_new_window(mlxx->mlx, mlxx->w_weight,
@@ -70,17 +65,23 @@ void	init_param(t_mlx *mlxx, char *file_name)
 	free(mlxx->SO_path);
 }
 
-int	main1(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_mlx	mlxx;
 
-	if (argc > 1)
-	mlxx.map = cube3d_full_map(argv[1], &mlxx);
-	if(mlxx.map == NULL)
+	if (argc > 1) //TODO check the name of map and number of argumenst
+		mlxx.map = cube3d_full_map(argv[1], &mlxx);
+	if (mlxx.map == NULL)
 		return (0);
-	init_param(&mlxx, argv[1]);
+		init_param(&mlxx, argv[1]);
+	if(!mlxx.color1)
+	{
+		printf("Error mlx imag\n");
+		exit(0);
+	}
 	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 	mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);
+	mlx_hook(mlxx.mlx_win, 17, 0, exit_key, &mlxx);
 	mlx_loop(mlxx.mlx);
 	return (0);
 }

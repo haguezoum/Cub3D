@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:23:24 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 22:39:24 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:41:33 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ char ** read_map(int height, int fd)
     while(i < height)
     {
         line = get_next_line(fd);
-        map[i] = ft_strdup(line);
-        free(line);
+        map[i] = line; // strdup(line);
+        // free(line);
         i++;
     }
     map[i] = NULL;
     return (map);
 }
 
-char **read_and_store_map(char *arg, t_mlx *mlxx)
+char ** read_and_store_map(char *arg, t_mlx *mlxx)
 {
     int fd;
     char **whole_map;
@@ -44,13 +44,11 @@ char **read_and_store_map(char *arg, t_mlx *mlxx)
     height = get_map_height(fd);
     ft_bzero(mlxx, sizeof(t_mlx));
     close(fd);
-
     fd = open(arg, O_RDONLY);
     whole_map = read_map(height, fd);
     if(!whole_map)
         return NULL;    
     close(fd);
- 
     return whole_map;
 }
 
@@ -86,6 +84,7 @@ char **validate_and_return_map(char **whole_map, t_mlx *mlxx)
     }
     else
     {
+        free_double(whole_map);
         perror("Bad Map params not completed\n");
         return NULL;
     }
@@ -97,11 +96,14 @@ char **cube3d_full_map(char *arg, t_mlx *mlxx)
     char **validate_and_return_map_;
     
     whole_map = read_and_store_map(arg, mlxx);
-    validate_and_return_map_ = validate_and_return_map(whole_map, mlxx);
+   
     if (whole_map == NULL)
-    {
         return NULL;
-    }
+        // system("leaks cub3d");
+    validate_and_return_map_ = validate_and_return_map(whole_map, mlxx);
+        // system("leaks cub3d");
+        // exit(2);
+ 
     if(validate_and_return_map_ == NULL)
     {
         free_double(whole_map);

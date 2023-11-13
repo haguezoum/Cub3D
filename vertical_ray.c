@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:28:34 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 15:36:40 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/13 06:45:37 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ t_point	vertical_ray(t_mlx *mlxx, double angle)
 	while (check_if_wall(mlxx->map, (int)((y_intercept) / 40),
 		(int)((x_intercept) / 40)) == 0)
 	{
-		if (mlxx->map[(int)(y_intercept / 40)][(int)(x_intercept / 40)] == '1'
-			|| mlxx->map[(int)(y_intercept / 40)]
-				[(int)(x_intercept / 40) - 1] == '1')
+		if (mlxx->map[(int)(y_intercept / 40)]
+			[(int)((x_intercept) / 40)] == '1')
+			break ;		
+		if (check_if_wall(mlxx->map, (int)((y_intercept) / 40),
+			(int)((x_intercept) / 40) - 1) == 1)
 			break ;
 		v_norm_help_2(&y_step, &x_intercept, &y_intercept, angle);
 	}
