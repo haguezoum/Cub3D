@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 10:25:36 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:51:43 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,43 +34,41 @@ typedef struct s_data
 
 typedef struct s_point
 {
-	float	x;
-	float	y;
-	float	x_offset;
-	float 	y_offset;
-	char 	type;
-	int		color;
-	unsigned int *color_array;
+	float			x;
+	float			y;
+	float			x_offset;
+	float			y_offset;
+	char			type;
+	int				color;
+	unsigned int	*color_array;
 }t_point;
 
 typedef struct s_mlx
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-	char	**map;
-	float	player_x;
-	float	player_y;
-	float	wall_x;
-	float	wall_y;
-	int 	wall_h;
-	double	angle;
-	float	x_offset;
-	// int		m_height;
-	// int		m_weight;
-	int		w_height;
-	int		w_weight;
-	int		color_select;
-	unsigned int *color1;
-	unsigned int *color2;
-	unsigned int *color3;
-	unsigned int *color4;
-	char *WE_path;
-	char *EA_path;
-	char *NO_path;
-	char *SO_path;
-	long F_color;
-	long C_color;
+	void			*mlx;
+	void			*mlx_win;
+	t_data			img;
+	char			**map;
+	float			player_x;
+	float			player_y;
+	float			wall_x;
+	float			wall_y;
+	int				wall_h;
+	double			angle;
+	float			x_offset;
+	int				w_height;
+	int				w_weight;
+	int				color_select;
+	unsigned int	*color1;
+	unsigned int	*color2;
+	unsigned int	*color3;
+	unsigned int	*color4;
+	char			*WE_path;
+	char			*EA_path;
+	char			*NO_path;
+	char			*SO_path;
+	long			F_color;
+	long			C_color;
 }t_mlx;
 
 typedef struct s_linkedlist
@@ -108,6 +106,7 @@ int check_if_wall(char **map, int x, int y);
 void	draw_all(int i, t_mlx *mlxx, int tmp_wall_h);
 int	find_wall_h(t_mlx *mlxx, double angle, t_point point);
 double	distance(int x1, int y1, int x2, int y2);
+int exit_key(t_mlx *mlxx);
 // just for test or visualisation the grid
 // void	drow_grid(t_mlx *mlxx);
 
@@ -152,5 +151,5 @@ int extention(char *line);
 //  utils functions 2
 void free_double(char **double_char_pointer);
 int table_counter(char **tab);
-int player_in_border(char **map);
+int	player_in_border(char **map);
 #endif
