@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 13:03:44 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:27:03 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 
 	if (argc > 1) //TODO check the name of map and number of argumenst
 		mlxx.map = cube3d_full_map(argv[1], &mlxx);
-	if (mlxx.map == NULL)
+	if (mlxx.map == NULL )
 		return (0);
 		init_param(&mlxx, argv[1]);
 	if(!mlxx.color1 || !mlxx.color2 || !mlxx.color3 || !mlxx.color4)
