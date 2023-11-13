@@ -6,29 +6,33 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:18:09 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/13 11:56:31 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:30:10 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-
-int get_map_height(int fd)
+int	get_map_height(int fd)
 {
-    int height;
-    char *line;
-    height = 0;
+	int		height;
+	char	*line;
 
-    while((line = get_next_line(fd)) != NULL)
-    {
-        height++;
-        free(line);
-    }
-    close(fd);
-    return height;
+	height = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+		{
+			break ;
+		}
+		height++;
+		free(line);
+	}
+	close(fd);
+	return (height);
 }
 
-long create_hexa(char *RGB)
+long	create_hexa(char *RGB)
 {  
     // int rgb_color[3];//TODO: FOR NORMINETTE 
    int r;

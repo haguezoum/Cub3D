@@ -6,127 +6,102 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:38:30 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/13 11:33:30 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:22:41 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char *param(char *path, int *count)
+char	*param(char *path, int *count)
 {
-    int i = 0;
-    while(path[i] != ' ' && path[i] != '\0')
-    {
-        i++;
-    }
-    return ((*count)++, ft_substr(path, i + 1, ft_strlen(path) - i));
+	int	i;
+
+	i = 0;
+	while (path[i] != ' ' && path[i] != '\0')
+	{
+		i++;
+	}
+	return ((*count)++, ft_substr(path, i + 1, ft_strlen(path) - i));
 }
 
-int check_rgb_count(char **rgb)
+int	check_rgb_count(char **rgb)
 {
-    int i;
-    
-    i  = 0;
-    while (rgb[i])
-    {
-        i++;
-    }
-    if(i != 3)
-        return (-1);
-    return (0);
+	int	i;
+
+	i = 0;
+	while (rgb[i])
+	{
+		i++;
+	}
+	if (i != 3)
+		return (-1);
+	return (0);
 }
 
-int check_comma(char *str)
+int	check_comma(char *str)
 {
-		int count;
-		int i;
+	int	count;
+	int	i;
 
-		i = 0;
-		count = 0;
-
-		while(str[i])
-		{
-			if(str[i] == ',')
-				count++;
-			i++;
-		}
-	if(count != 2)
-		return -1;
-	return 0;
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			count++;
+		i++;
+	}
+	if (count != 2)
+		return (-1);
+	return (0);
 }
 
-void process_texture_line(char *line, t_mlx *mlxx, int *count)
+void	process_texture_line(char *line, t_mlx *mlxx, int *count)
 {
-    char *param_res;
-    
-    
-    if (ft_strncmp("NO ", line, 3) == 0)
-    {
-        param_res = param(line, count);
-        mlxx->NO_path = ft_strtrim(param_res, " \n");
-        free(param_res);
-    }
-    else if (ft_strncmp("SO ", line, 3) == 0)
-    {
-        param_res = param(line, count);
-        mlxx->SO_path = ft_strtrim(param_res, " \n");
-        free(param_res);
-    }
-    else if (ft_strncmp("WE ", line, 3) == 0)
-    {
-        param_res = param(line, count);
-        mlxx->WE_path = ft_strtrim(param_res, " \n");
-        free(param_res);
-    }
-    else if (ft_strncmp("EA ", line, 3) == 0)
-    {
-        param_res = param(line, count);
-        mlxx->EA_path = ft_strtrim(param_res, " \n");
-        free(param_res);
-    }
-    else if (ft_strncmp("C ", line, 2) == 0)
-    {
-        param_res = param(line, count);
-        mlxx->C_color = create_hexa(param_res);
-        free(param_res);
-    }
-    else if (ft_strncmp("F ", line, 2) == 0)
-    {
-        param_res = param(line, count);
-        mlxx->F_color = create_hexa(param_res);
-        free(param_res);
-    }
-    else if (ft_isalpha(line[0]))
-    {
-        printf("Error\n");
-        return ;
-    }
+	if (ft_strncmp("NO ", line, 3) == 0)
+		norm_dir_path(line, count, &mlxx->NO_path);
+	else if (ft_strncmp("SO ", line, 3) == 0)
+		norm_dir_path(line, count, &mlxx->SO_path);
+	else if (ft_strncmp("WE ", line, 3) == 0)
+		norm_dir_path(line, count, &mlxx->WE_path);
+	else if (ft_strncmp("EA ", line, 3) == 0)
+		norm_dir_path(line, count, &mlxx->EA_path);
+	else if (ft_strncmp("C ", line, 2) == 0)
+		norm_color(line, count, &mlxx->C_color);
+	else if (ft_strncmp("F ", line, 2) == 0)
+		norm_color(line, count, &mlxx->F_color);
+	else if (ft_isalpha(line[0]))
+	{
+		printf("Error dee\n");
+		exit(1);
+	}
 }
 
-int store_params(char **map, t_mlx *mlxx)
+int	store_params(char **map, t_mlx *mlxx)
 {
-    int i = 0;
-    int count = 0;
-    int c_count = 0;
-    int f_count = 0;
-    char *line;
+	int		i;
+	int		count;
+	int		c_count;
+	int		f_count;
+	char	*line;
 
-    while (map[i] && count < 7)
-    {
-        line = ft_strtrim(map[i], " ");
-        process_texture_line(line, mlxx, &count);
-        free(line);
-        i++;
-    }
-
-    if (mlxx->C_color != -1)
-        c_count++;
-    if (mlxx->F_color != -1)
-        f_count++;
-    if (c_count != 1 || f_count != 1 || mlxx->C_color <= 0 || mlxx->F_color <= 0)
-    {
-        return (-1);
-    }
-
-    return count;
+	i = 0;
+	count = 0;
+	c_count = 0;
+	f_count = 0;
+	while (map[i] && count < 7)
+	{
+		line = ft_strtrim(map[i], " ");
+		process_texture_line(line, mlxx, &count);
+		free(line);
+		i++;
+	}
+	if (mlxx->C_color != -1)
+		c_count++;
+	if (mlxx->F_color != -1)
+		f_count++;
+	if (c_count != 1 || f_count != 1 || mlxx->C_color <= 0 
+		|| mlxx->F_color <= 0)
+		return (-1);
+	return (count);
 }

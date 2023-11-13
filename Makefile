@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+         #
+#    By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 18:10:05 by abdel-ou          #+#    #+#              #
-#    Updated: 2023/11/13 12:56:08 by abdel-ou         ###   ########.fr        #
+#    Updated: 2023/11/13 22:18:26 by haguezou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC=	main.c drow_line.c \
 		./parsing/check_inside_maps.c \
 	    ./parsing/parse.c ./parsing/new_parse.c \
 		./parsing/parse_params.c ./parsing/utils_functions.c \
-		./parsing/utils_functions2.c 
+		./parsing/utils_functions2.c ./parsing/utils_functions3.c 
 
 INCLUDES= -I /usr/include
 
