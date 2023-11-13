@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/12 18:48:37 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/13 08:23:59 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_mlx
 	float	player_y;
 	float	wall_x;
 	float	wall_y;
+	int 	wall_h;
 	double	angle;
 	float	x_offset;
 	// int		m_height;
@@ -80,7 +81,7 @@ typedef struct s_linkedlist
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 char	**memory_allocete(char *file_name);
-void	draw_line(int p1_x, int p1_y, int p2_y, int color, t_mlx *mlxx);
+void	draw_line(int p1_x, int x, int color, t_mlx *mlxx);
 // char	*get_next_line(int fd, int buffers);
 // int		ft_strlen(char *str);
 // char	*ft_strdup(char *str);
@@ -101,7 +102,7 @@ void	drow_rays(t_mlx *mlxx, double angle, int color);
 void	scan(t_mlx *mlxx, double angle, int i);
 // void	drow_mini_map(t_mlx *mlxx);
 unsigned int *load_color(t_mlx *mlx, char *path);
-void draw_line_x(int x0, int y0, int y1, unsigned int *color, t_mlx *mlxx, int tmp_wall_h);
+void draw_line_x(int x0,unsigned int *color, t_mlx *mlxx, int tmp_wall_h);
 void	drow_mini_map(t_mlx	*mlxx);
 int check_if_wall(char **map, int x, int y);
 // just for test or visualisation the grid
