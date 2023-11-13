@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 12:50:37 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:55:07 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,30 @@ void	init_param(t_mlx *mlxx, char *file_name)
 	mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx->w_weight, mlxx->w_height);
 	mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel,
 			&mlxx->img.line_length, &mlxx->img.endian);
-	mlxx->color1 = load_color(mlxx, "./texture/wall_40_1.xpm");
-	mlxx->color2 = load_color(mlxx, "./texture/wall_40_2.xpm");
-	mlxx->color3 = load_color(mlxx, "./texture/wall_40_3.xpm");
-	mlxx->color4 = load_color(mlxx, "./texture/wall_40_4.xpm");
+	mlxx->color1 = load_color(mlxx, mlxx->NO_path);
+	mlxx->color2 = load_color(mlxx, mlxx->EA_path);
+	mlxx->color3 = load_color(mlxx, mlxx->WE_path);
+	mlxx->color4 = load_color(mlxx, mlxx->SO_path);
+	free(mlxx->NO_path);
+	free(mlxx->EA_path);
+	free(mlxx->WE_path);
+	free(mlxx->SO_path);
 }
 
 int	main(int argc, char **argv)
 {
 	t_mlx	mlxx;
 
-	if (argc > 1)
+	if (argc > 1) //TODO check the name of map and number of argumenst
 		mlxx.map = cube3d_full_map(argv[1], &mlxx);
 	if (mlxx.map == NULL )
 		return (0);
-	init_param(&mlxx, argv[1]);
+		init_param(&mlxx, argv[1]);
+	if(!mlxx.color1)
+	{
+		printf("Error mlx imag\n");
+		exit(0);
+	}
 	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 	mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);
 	mlx_hook(mlxx.mlx_win, 17, 0, exit_key, &mlxx);

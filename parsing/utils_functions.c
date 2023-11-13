@@ -6,14 +6,14 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:37:20 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/12 16:21:23 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:05:21 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../cub3d.h"
 
-int	cube_atoi(const char *str)
+int	cube_atoi(char *str)
 {
 	long	res;
 	size_t	i;
@@ -68,18 +68,15 @@ int check_map_name(char *map_name)
 int check_path(t_mlx *mlxx)
 {
      if (!mlxx->EA_path || !mlxx->SO_path || !mlxx->WE_path || !mlxx->NO_path)
-    {
-        // free double pointer
+    {  
         return (-1);
     }
     if(extention(mlxx->EA_path) == -1 || extention(mlxx->SO_path) == -1 || extention(mlxx->WE_path) == -1 || extention(mlxx->NO_path) == -1)
     {
-        // free double pointer
         return (-1);
     }
-    if(access(mlxx->EA_path, F_OK) == -1 || access(mlxx->SO_path, F_OK) == -1 || access(mlxx->WE_path, F_OK) == -1 || access(mlxx->NO_path, F_OK) == -1)
+    if(open(mlxx->EA_path, O_RDONLY) == -1 || open(mlxx->SO_path, O_RDONLY) == -1 || open(mlxx->WE_path, O_RDONLY) == -1 || open(mlxx->NO_path, O_RDONLY) == -1)
     {
-        // free double pointer
         return (-1);
     }
     return (0);
@@ -91,7 +88,6 @@ int ft_isspace(char c)
         return (1);
     return (0);
 }
-
 
 int extention(char *line)
 {

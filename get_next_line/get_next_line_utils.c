@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 11:14:16 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/10/05 11:07:34 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:27:07 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ char	*ft_strjoin(char *str1, char *str2)
 		j++;
 	}
 	newstr[i] = '\0';
+	free(str1);
 	return (newstr);
 }
 
