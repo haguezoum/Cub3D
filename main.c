@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/14 18:19:21 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:28:42 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,8 @@ void	player_int(t_mlx *mlxx)
 	}
 }
 
-void	init_param(t_mlx *mlxx, char *file_name)
+void	init_param(t_mlx *mlxx)
 {
-	int	fd;
-
-	fd = open(file_name, O_RDONLY, 0);
 	mlxx->w_weight = 1280;
 	mlxx->w_height = 720;
 	player_int(mlxx);
@@ -64,20 +61,34 @@ void	init_param(t_mlx *mlxx, char *file_name)
 	free(mlxx->WE_path);
 	free(mlxx->SO_path);
 }
+
+int	mouse_hook(int button, int x, int y, void *param)
+{
+	t_mlx	*mlxx;
+
+	mlxx = (t_mlx *)param;
+	(void)y;
+	(void)x;
+	if (button == 1)
+		mlxx->angle -= 0.1;
+	if (button == 2)
+		mlxx->angle += 0.1;
+	return (0);
+}
+
 void main_helper(t_mlx *mlxx, char *map_name)
 {
-	mlxx.map = cube3d_full_map(argv[1], &mlxx);
-	if (mlxx.map == NULL )
+	mlxx->map = cube3d_full_map(map_name, mlxx);
+	if (mlxx->map == NULL )
 		exit(1);
-	init_param(&mlxx, argv[1]);
-	if(!mlxx.color1 || !mlxx.color2 || !mlxx.color3 || !mlxx.color4)
+	init_param (mlxx);
+	if (!mlxx->color1 || !mlxx->color2 || !mlxx->color3 || !mlxx->color4)
 	{
-		printf("Error\ncheck images again !\n");
-		free_double(mlxx.map);
+		printf("Error mlx imag\n");
+		free_double(mlxx->map);
 		exit(1);
 	}
 }
-
 int	main(int argc, char **argv)
 {
 	t_mlx	mlxx;
@@ -86,20 +97,34 @@ int	main(int argc, char **argv)
 	{
 		if(check_map_name(argv[1]) == 0)
 		{
-			printf("Error\nfile extention must be .cub !\n");
-			exit(0);
+			printf("Error\n map name !\n");
+			exit(1);
 		}
 		main_helper(&mlxx, argv[1]);
+		// mlxx.map = cube3d_full_map(argv[1], &mlxx);
+		// // -----------------------
+		// if (mlxx.map == NULL )
+		// 	exit(1);
+		// init_param (&mlxx);
+		// if (!mlxx.color1 || !mlxx.color2 || !mlxx.color3 || !mlxx.color4)
+		// {
+		// 	printf("Error mlx imag\n");
+		// 	free_double(mlxx.map);
+		// 	exit(1);
+		// }
+	// -----------------------
+		system("leaks cub3d");
 		mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 		mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);
 		mlx_hook(mlxx.mlx_win, 17, 0, exit_key, &mlxx);
+		mlx_mouse_hook(mlxx.mlx_win, mouse_hook, &mlxx);
 		mlx_loop(mlxx.mlx);
-		return (0);
 	}
 	else
 	{
-		printf("Error\ncheck arguments again !\n");
-		exit(0);
+		printf("Error\n tow arguments !\n");
+		exit(1);
 	}
+	
 	return (0);
 }

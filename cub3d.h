@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/14 15:08:23 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:59:04 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,9 @@ void	draw_line(int p1_x, int x, int color, t_mlx *mlxx);
 // char	*ft_strdup(char *str);
 int		check_new_line(char *str);
 char	**load_map(char *file_name);
-void	drow_square(int startx, int starty, t_data img, int color);
 void	drow_player(t_mlx mlxx);
 int		drow(void *param);
 
-void	init_param(t_mlx *mlxx, char *file_name);
 int		click_key(int key, t_mlx *mlxx);
 
 t_point	horizontal_ray(t_mlx *mlxx, double angle);

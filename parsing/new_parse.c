@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:18:09 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/14 17:38:07 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:25:36 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ long create_hexa(char *RGB)
         free(b_);
         exit(0);
     }
+    free(r_);
+    free(g_);
+    free(b_);
     return (((rgb_color[0] & 0xff) << 16) + ((rgb_color[1] & 0xff) << 8) + (rgb_color[2] & 0xff));
 }
 
