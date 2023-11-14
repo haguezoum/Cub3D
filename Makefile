@@ -6,7 +6,7 @@
 #    By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 18:10:05 by abdel-ou          #+#    #+#              #
-#    Updated: 2023/11/14 19:58:47 by haguezou         ###   ########.fr        #
+#    Updated: 2023/11/15 00:27:42 by haguezou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,11 @@ $(NAME): $(OBJ) $(HEADER)
 	$(CC) $(FLAGS) -c $^ -o $@ 
 
 fclean:
+	@$(MAKE) -C ./libft fclean
 	rm -rf $(NAME) $(OBJ) $(OBJBONUS)
 
 clean:
+	@$(MAKE) -C ./libft clean
 	rm -rf $(OBJ)
 
 re:fclean $(NAME)
