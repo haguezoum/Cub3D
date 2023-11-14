@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 22:12:26 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/14 23:59:08 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 00:07:55 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	is_valid_char_inzero(char **map, int i, int j, int size)
 	return (1);
 }
 
-void	handle_rgb_error(int r, int g, int b, char *r_, char *g_, char *b_)
+void	handle_rgb_error(t_rgb_color color, char *r_, char *g_, char *b_)
 {
-	if (r == -1 || g == -1 || b == -1) 
+	if (color.r == -1 || color.g == -1 || color.b == -1) 
 	{
 		printf("ERROR \nRGB not right!");
 		free(r_);

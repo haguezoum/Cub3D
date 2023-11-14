@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:18:09 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/14 23:59:27 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 00:20:10 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ long	create_hexa(char *RGB)
 	color.g = cube_atoi(g_);
 	color.b = cube_atoi(b_);
 	free_double(rgb);
-	handle_rgb_error(color.r, color.g, color.b, r_, g_, b_);
+	handle_rgb_error(color, r_, g_, b_);
 	return (free(r_), free(g_), free(b_), ((color.r & 0xff) << 16)
 		+ ((color.g & 0xff) << 8) + (color.b & 0xff));
 }
