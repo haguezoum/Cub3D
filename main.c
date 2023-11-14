@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 13:27:03 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:14:33 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,20 @@ void	init_param(t_mlx *mlxx, char *file_name)
 	free(mlxx->SO_path);
 }
 
+int	mouse_hook(int button, int x, int y, void *param)
+{
+	t_mlx	*mlxx;
+
+	mlxx = (t_mlx *)param;
+	(void)button;
+	(void)y;
+	if (x > mlxx->w_weight / 2)
+		mlxx->angle += 0.1;
+	else
+		mlxx->angle -= 0.1;
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx	mlxx;
@@ -73,17 +87,17 @@ int	main(int argc, char **argv)
 		mlxx.map = cube3d_full_map(argv[1], &mlxx);
 	if (mlxx.map == NULL )
 		return (0);
-		init_param(&mlxx, argv[1]);
-	if(!mlxx.color1 || !mlxx.color2 || !mlxx.color3 || !mlxx.color4)
+	init_param (&mlxx, argv[1]);
+	if (!mlxx.color1 || !mlxx.color2 || !mlxx.color3 || !mlxx.color4)
 	{
 		printf("Error mlx imag\n");
 		free_double(mlxx.map);
-		
 		exit(0);
 	}
 	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 	mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);
 	mlx_hook(mlxx.mlx_win, 17, 0, exit_key, &mlxx);
+	mlx_mouse_hook(mlxx.mlx_win, mouse_hook, &mlxx);
 	mlx_loop(mlxx.mlx);
 	return (0);
 }

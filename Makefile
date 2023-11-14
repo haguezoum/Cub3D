@@ -6,13 +6,13 @@
 #    By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 18:10:05 by abdel-ou          #+#    #+#              #
-#    Updated: 2023/11/13 12:56:08 by abdel-ou         ###   ########.fr        #
+#    Updated: 2023/11/14 13:13:00 by abdel-ou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=cub3d
 FRAEMWORKS = -L /usr/lib -lmlx -framework OpenGL -framework AppKit
-FLAGS= -ffast-math -Wall -Wextra -Werror #-fsanitize=address -g
+FLAGS= -ffast-math -Wall -Wextra -Werror -fsanitize=address -g
 
 SRC=	main.c drow_line.c \
 		draw.c key_hook.c  horizontal_rays.c vertical_ray.c mini_map.c \

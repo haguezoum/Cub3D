@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 12:43:50 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:15:26 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	draw_line(int p1_x, int x, int color, t_mlx *mlxx);
 // char	*ft_strdup(char *str);
 int		check_new_line(char *str);
 char	**load_map(char *file_name);
-void	drow_square(int startx, int starty, t_data img, int color);
+void	drow_square(t_mlx *mlxx, int startx, int starty, t_data img, int color);
 void	drow_player(t_mlx mlxx);
 int		drow(void *param);
 
