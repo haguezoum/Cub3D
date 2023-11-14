@@ -6,73 +6,72 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:26:17 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/13 22:55:17 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:52:05 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int check_inside_err(char **map, char sus)
+int	check_inside_err(char **map, char sus)
 {
-    int i;
-    int j;
-    int count;
+	int	i;
+	int	j;
+	int	count;
 
-    i = 0;
-    j = 0;
-    count = 0;
-
-    while(map[i])
-    {
-        j  = 0;
-        while(map[i][j])
-        {
-            if(map[i][j] == sus)
-            {
-                if(map[i][j + 1] == 10 || map[i][j - 1] == 10 || map[i + 1][j] == 10 || map[i - 1][j] == 10)
-                {
-                    return (-1);
-                }
-            }
-            j++;
-        }
-        i++;
-    }
-    return (0);
+	i = 0;
+	j = 0;
+	count = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == sus)
+			{
+				if (map[i][j + 1] == 10 || map[i][j - 1] == 10 
+					|| map[i + 1][j] == 10 || map[i - 1][j] == 10)
+				{
+					return (-1);
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
-int open_zero(char **map) {
-    int i = 0;
-    int j = 0;
+int	open_zero(char **map)
+{
+	int	i;
+	int	j;
 
-    while (map[i]) 
-    {
-        j = 0;
-        while (map[i][j]) 
-        { 
-            if (map[i][j] == '0')
-            {
-                if (i == 0 || i == table_counter(map) - 1 || j == 0 || j == (int)ft_strlen(map[i]) - 2)
-                    return (-1);
-                if (j >= (int)ft_strlen(map[i + 1])  || j >= (int)ft_strlen(map[i - 1]) )
-                {
-                    return (-1);
-                }
-                if (map[i][j + 1] == ' ' || map[i][j - 1] == ' ' || map[i][j + 1] == 10 || map[i][j - 1] == 10)
-                {
-                    return (-1);
-                }
-                if ((map[i + 1][j] && (map[i + 1][j] == ' ' || map[i + 1][j] == 10))  || (map[i - 1][j] == ' ' && (map[i - 1][j] || map[i - 1][j] == 10)))
-                {
-                    return (-1);
-                }
-            }
-            j++;
-        }
-        i++;
-    }
-
-    return 0;
+	i = -1;
+	while (map[++i]) 
+	{
+		j = -1;
+		while (map[i][++j]) 
+		{
+			if (map[i][j] == '0')
+			{
+				if (i == 0 || i == table_counter(map) - 1 || j == 0 
+					|| j == (int)ft_strlen(map[i]) - 2)
+					return (-1);
+				if (j >= (int)ft_strlen(map[i + 1])
+					|| j >= (int)ft_strlen(map[i - 1]))
+					return (-1);
+				if (map[i][j + 1] == ' ' || map[i][j - 1] == ' '
+					|| map[i][j + 1] == 10 || map[i][j - 1] == 10)
+					return (-1);
+				if ((map[i + 1][j]
+					&& (map[i + 1][j] == ' ' || map[i + 1][j] == 10))
+					|| (map[i - 1][j] == ' '
+					&& (map[i - 1][j] || map[i - 1][j] == 10)))
+					return (-1);
+			}
+		}
+	}
+	return (0);
 }
 
 int main_units(char **map) 
