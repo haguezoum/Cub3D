@@ -6,11 +6,11 @@
 #    By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 18:10:05 by abdel-ou          #+#    #+#              #
-#    Updated: 2023/11/14 10:02:37 by haguezou         ###   ########.fr        #
+#    Updated: 2023/11/14 17:59:41 by haguezou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=cub3d
+NAME=cub3D
 FRAEMWORKS = -L /usr/lib -lmlx -framework OpenGL -framework AppKit
 FLAGS= -ffast-math -Wall -Wextra -Werror #-fsanitize=address -g
 
