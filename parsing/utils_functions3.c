@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 22:12:26 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/13 22:31:45 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:36:19 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,18 @@ void	norm_color(char *line, int *count, long *color)
 	param_res = param(line, count);
 	*color = create_hexa(param_res);
 	free(param_res);
+}
+
+int	is_valid_char_inzero(char **map, int i, int j, int size)
+{
+	if (i == 0 || i == size - 1 || j == 0 || j >= (int)ft_strlen(map[i]) - 1)
+		return (0);
+	if (j >= (int)ft_strlen(map[i + 1]) || j >= (int)ft_strlen(map[i - 1]))
+		return (0);
+	if (map[i][j + 1] == ' ' || map[i][j - 1] == ' '
+		|| map[i + 1][j] == ' ' || map[i - 1][j] == ' ')
+		return (0);
+	if (map[i + 1][j] == 10 || map[i - 1][j] == 10)
+		return (0);
+	return (1);
 }

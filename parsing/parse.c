@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:23:24 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/14 10:21:14 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:49:09 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,27 @@ char	**validate_and_return_map(char **whole_map, t_mlx *mlxx)
 	char	**mapy;
 	int		store_param_;
 	int		check_path_;
+	char	*msg_error;
 
+	msg_error = "Bad Map params not completed\n";
 	if (!whole_map)
 		return (NULL);
-	
 	store_param_ = store_params(whole_map, mlxx);
 	check_path_ = check_path(mlxx);
-	
 	if (store_param_ == 6 && check_path_ == 0)
 	{
 		mapy = pure_map(whole_map);
 		if (!mapy)
-		{
 			return (free_double(whole_map), NULL);
-		}
 		if (inside_map(mapy) == -1)
 		{
-			free_double(whole_map);
-			return (NULL);
+			return (free_double(whole_map), NULL);
 		}
 		else
 			return (free_double(whole_map), mapy);
 	}
 	else
-		return (free_double(whole_map), perror("Bad Map params not completed\n"),
-			NULL);
+		return (free_double(whole_map), perror(msg_error), NULL);
 }
 
 char	**cube3d_full_map(char *arg, t_mlx *mlxx)

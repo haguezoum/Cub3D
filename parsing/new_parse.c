@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:18:09 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/13 22:30:10 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:38:07 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,51 +32,39 @@ int	get_map_height(int fd)
 	return (height);
 }
 
-long	create_hexa(char *RGB)
-{  
-    // int rgb_color[3];//TODO: FOR NORMINETTE 
-   int r;
-   int g;
-   int b;
-   char *r_;
-   char *g_;
-   char *b_;
-   
-   char **rgb;
+long create_hexa(char *RGB)
+{
+    int rgb_color[3];
+    char *r_;
+    char *g_;
+    char *b_;
+    char **rgb;
 
-   r = 0;
-   g = 0;
-   b = 0;
-
-   rgb = ft_split(RGB, ',');
-	if(check_rgb_count(rgb) == -1 || check_comma(RGB) == -1)
-	{
-		printf("ERROR\nRGB error");
+    ft_bzero(rgb_color, sizeof(rgb_color));
+    rgb = ft_split(RGB, ',');
+    if (check_rgb_count(rgb) == -1 || check_comma(RGB) == -1)
+    {
+        printf("ERROR\nRGB error");
         free_double(rgb);
-		return (-1);
-	}
-    
+        return (-1);
+    }
     r_ = ft_strtrim(rgb[0], "\n");
     g_ = ft_strtrim(rgb[1], "\n");
     b_ = ft_strtrim(rgb[2], "\n");
-    
-   r = cube_atoi(r_);
-   g = cube_atoi(g_);
-   b = cube_atoi(b_);
-   free_double(rgb);
-   if(r == -1 || g == -1 || b == -1)
-   {
-	   printf("ERROR \nRGB not right!");
-	   exit(0);
-   }
-//    printf("%p\n", r_);
-//    printf("%p\n", g_);
-//     printf("%p\n", b_);
-//    while(1){}
-free(r_);
-free(g_);
-free(b_);
-   return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+    rgb_color[0] = cube_atoi(r_);
+    rgb_color[1] = cube_atoi(g_);
+    rgb_color[2] = cube_atoi(b_);
+    free_double(rgb);
+
+    if (rgb_color[0] == -1 || rgb_color[1] == -1 || rgb_color[2] == -1)
+    {
+        printf("ERROR \nRGB not right!");
+        free(r_);
+        free(g_);
+        free(b_);
+        exit(0);
+    }
+    return (((rgb_color[0] & 0xff) << 16) + ((rgb_color[1] & 0xff) << 8) + (rgb_color[2] & 0xff));
 }
 
 char **pure_map(char **map)
