@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/14 19:43:55 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:57:44 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,23 @@ void	moves(float *tmp_x, float *tmp_y, double *tmp_angle, int *key)
 		(*tmp_angle) -= 0.12;
 	if (*key == 13)
 	{
-		(*tmp_x) -= 20 * cos((*tmp_angle));
-		(*tmp_y) -= 20 * sin((*tmp_angle));
+		(*tmp_x) -= 10 * cos((*tmp_angle));
+		(*tmp_y) -= 10 * sin((*tmp_angle));
 	}
 	if (*key == 1)
 	{
-		(*tmp_x) += 20 * cos((*tmp_angle));
-		(*tmp_y) += 20 * sin((*tmp_angle));
+		(*tmp_x) += 10 * cos((*tmp_angle));
+		(*tmp_y) += 10 * sin((*tmp_angle));
 	}
 	if (*key == 0)
 	{
-		(*tmp_x) -= 20 * cos((*tmp_angle) - M_PI_2);
-		(*tmp_y) -= 20 * sin((*tmp_angle) - M_PI_2);
+		(*tmp_x) -= 10 * cos((*tmp_angle) - M_PI_2);
+		(*tmp_y) -= 10 * sin((*tmp_angle) - M_PI_2);
 	}
 	if (*key == 2)
 	{
-		(*tmp_x) -= 20 * cos((*tmp_angle) + M_PI_2);
-		(*tmp_y) -= 20 * sin((*tmp_angle) + M_PI_2);
+		(*tmp_x) -= 10 * cos((*tmp_angle) + M_PI_2);
+		(*tmp_y) -= 10 * sin((*tmp_angle) + M_PI_2);
 	}
 }
 
@@ -54,7 +54,12 @@ int	vurtual_move(int key, t_mlx *mlxx)
 		return (0);
 	if (mlxx->map[(int)mlxx->player_y / 40][(int)tmp_x / 40] == '1' || mlxx->map[(int)tmp_y / 40][(int)mlxx->player_x / 40] == '1')
 		return (0);
-	
+	if(check_if_wall(mlxx->map, (tmp_y - 1) / 40, (tmp_x - 1) / 40) == 1 || check_if_wall(mlxx->map, (tmp_y + 1) / 40, (tmp_x + 1) / 40) == 1 )
+		return (0);
+	if(check_if_wall(mlxx->map, (tmp_y - 1) / 40, (tmp_x) / 40) == 1 || check_if_wall(mlxx->map, (tmp_y + 1) / 40, (tmp_x) / 40) == 1 )
+		return (0);
+	if(check_if_wall(mlxx->map, (tmp_y) / 40, (tmp_x - 1) / 40) == 1 || check_if_wall(mlxx->map, (tmp_y) / 40, (tmp_x + 1) / 40) == 1 )
+		return (0);
 	return (1);
 }
 
@@ -96,4 +101,3 @@ int	click_key(int key, t_mlx *mlxx)
 	}
 	return (0);
 }
-// TODO: fix norm
