@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/14 11:04:33 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:56:05 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	drow_rays(t_mlx *mlxx, double angle, int color)
 	int		y;
 	double	z;
 
-	x = mlxx->player_x / 4 + (50 - mlxx->player_x / 4);
-	y = mlxx->player_y / 4 + (50 - mlxx->player_y / 4);
+	x = mlxx->player_x / 4 + (1180 - mlxx->player_x / 4);
+	y = mlxx->player_y / 4 + (620 - mlxx->player_y / 4);
 	z = 0;
 	while (z < 2 * M_PI) 
 	{
@@ -33,8 +33,8 @@ void	drow_rays(t_mlx *mlxx, double angle, int color)
 	z = 0;
 	while (z < 2 * M_PI) 
 	{
-		xx = x - (50 * cos(angle + z));
-		yy = y - (50 * sin(angle + z));
+		xx = x - (100 * cos(angle + z));
+		yy = y - (100 * sin(angle + z));
 		my_mlx_pixel_put(&mlxx->img, xx, yy, color);
 		z += 0.001;
 	}
@@ -47,15 +47,15 @@ void	drow_square(t_mlx *mlxx, int startx, int starty, t_data img, int color)
 
 	i = 0;
 	j = 0;
-	startx = (startx * 10) + (50 - mlxx->player_x / 4);
-	starty = (starty * 10) + (50 - mlxx->player_y / 4);
+	startx = (startx * 10) + (1180 - mlxx->player_x / 4);
+	starty = (starty * 10) + (620 - mlxx->player_y / 4);
 	while (j < 10)
 	{
 		while (i < 10)
-		{ 	
-			if ((startx + i) >= 0 && (startx + i) <= 100 && (starty + j) >= 0 && (starty + j) <= 100)
+		{
+			if ((startx + i) >= 0 && (startx + i) <= 1280 && (starty + j) >= 0 && (starty + j) <= 720)
 			{
-				if (distance(startx + i, starty + j, mlxx->player_x / 4 + (50 - mlxx->player_x / 4), mlxx->player_y / 4 + (50 - mlxx->player_y / 4)) < 50)
+				if (distance(startx + i, starty + j, mlxx->player_x / 4 + (1180 - mlxx->player_x / 4), mlxx->player_y / 4 + (620 - mlxx->player_y / 4)) < 100)
 				{
 					my_mlx_pixel_put(&img, (startx + i), (starty + j), color);
 				}
