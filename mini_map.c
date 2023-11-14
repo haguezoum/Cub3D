@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/14 14:56:05 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:35:35 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	drow_rays(t_mlx *mlxx, double angle, int color)
 	}
 }
 
-void	drow_square(t_mlx *mlxx, int startx, int starty, t_data img, int color)
+void	drow_square(t_mlx *mlxx, int startx, int starty, int color)
 {
 	int	i;
 	int	j;
@@ -53,12 +53,14 @@ void	drow_square(t_mlx *mlxx, int startx, int starty, t_data img, int color)
 	{
 		while (i < 10)
 		{
-			if ((startx + i) >= 0 && (startx + i) <= 1280 && (starty + j) >= 0 && (starty + j) <= 720)
+			if ((startx + i) >= 0 && (startx + i) <= 1280 && (starty + j) >= 0
+				&& (starty + j) <= 720)
 			{
-				if (distance(startx + i, starty + j, mlxx->player_x / 4 + (1180 - mlxx->player_x / 4), mlxx->player_y / 4 + (620 - mlxx->player_y / 4)) < 100)
-				{
-					my_mlx_pixel_put(&img, (startx + i), (starty + j), color);
-				}
+				if (distance(startx + i, starty + j,
+						mlxx->player_x / 4 + (1180 - mlxx->player_x / 4),
+						mlxx->player_y / 4 + (620 - mlxx->player_y / 4)) < 100)
+					my_mlx_pixel_put(&mlxx->img, (startx + i),
+						(starty + j), color);
 			}
 			i++;
 		}
@@ -79,9 +81,9 @@ void	drow_mini_map(t_mlx	*mlxx)
 		while (mlxx->map[i][j])
 		{
 			if (mlxx->map[i][j] == '1')
-				drow_square(mlxx, j, i, mlxx->img, 0xffffff);
+				drow_square(mlxx, j, i, 0xffffff);
 			if (mlxx->map[i][j] != '1')
-				drow_square(mlxx, j, i, mlxx->img, 0x000000);
+				drow_square(mlxx, j, i, 0x000000);
 			j++;
 		}
 		j = 0;
