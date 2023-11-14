@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 22:17:19 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:08:23 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int player_position_count(char **map);
 
 void norm_dir_path(char *line, int *count, char **direction);
 void norm_color(char *line, int *count, long *color);
-
+int	is_valid_char_inzero(char **map, int i, int j, int size);
 
 
 #endif
