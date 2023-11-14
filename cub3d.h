@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 18:15:26 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:23:38 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,12 @@ void free_double(char **double_char_pointer);
 int table_counter(char **tab);
 int is_valid_char(char c);
 int player_position_count(char **map);
+
+//  utils functions 3
+
+void norm_dir_path(char *line, int *count, char **direction);
+void norm_color(char *line, int *count, long *color);
+
+
 
 #endif

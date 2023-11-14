@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/14 13:14:33 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:30:38 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ int	mouse_hook(int button, int x, int y, void *param)
 	t_mlx	*mlxx;
 
 	mlxx = (t_mlx *)param;
-	(void)button;
 	(void)y;
-	if (x > mlxx->w_weight / 2)
-		mlxx->angle += 0.1;
-	else
+	(void)x;
+	if (button == 1)
 		mlxx->angle -= 0.1;
+	if (button == 2)
+		mlxx->angle += 0.1;
 	return (0);
 }
 
@@ -94,6 +94,7 @@ int	main(int argc, char **argv)
 		free_double(mlxx.map);
 		exit(0);
 	}
+	system("leaks cub3d");
 	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 	mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);
 	mlx_hook(mlxx.mlx_win, 17, 0, exit_key, &mlxx);

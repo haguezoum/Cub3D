@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 12:04:44 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:39:34 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 void	moves(float *tmp_x, float *tmp_y, double *tmp_angle, int *key)
 {
 	if (*key == 124)
-		(*tmp_angle) += 0.07;
+		(*tmp_angle) += 0.12;
 	if (*key == 123)
-		(*tmp_angle) -= 0.07;
+		(*tmp_angle) -= 0.12;
 	if (*key == 13)
 	{
-		(*tmp_x) -= 13 * cos((*tmp_angle));
-		(*tmp_y) -= 13 * sin((*tmp_angle));
+		(*tmp_x) -= 20 * cos((*tmp_angle));
+		(*tmp_y) -= 20 * sin((*tmp_angle));
 	}
 	if (*key == 1)
 	{
-		(*tmp_x) += 13 * cos((*tmp_angle));
-		(*tmp_y) += 13 * sin((*tmp_angle));
+		(*tmp_x) += 20 * cos((*tmp_angle));
+		(*tmp_y) += 20 * sin((*tmp_angle));
 	}
 	if (*key == 0)
 	{
-		(*tmp_x) -= 13 * cos((*tmp_angle) - 1.5708);
-		(*tmp_y) -= 13 * sin((*tmp_angle) - 1.5708);
+		(*tmp_x) -= 20 * cos((*tmp_angle) - M_PI_2);
+		(*tmp_y) -= 20 * sin((*tmp_angle) - M_PI_2);
 	}
 	if (*key == 2)
 	{
-		(*tmp_x) -= 13 * cos((*tmp_angle) + 1.5708);
-		(*tmp_y) -= 13 * sin((*tmp_angle) + 1.5708);
+		(*tmp_x) -= 20 * cos((*tmp_angle) + M_PI_2);
+		(*tmp_y) -= 20 * sin((*tmp_angle) + M_PI_2);
 	}
 }
 
@@ -54,6 +54,7 @@ int	vurtual_move(int key, t_mlx *mlxx)
 		return (0);
 	if (mlxx->map[(int)mlxx->player_y / 40][(int)tmp_x / 40] == '1' || mlxx->map[(int)tmp_y / 40][(int)mlxx->player_x / 40] == '1')
 		return (0);
+	
 	return (1);
 }
 
