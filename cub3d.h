@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/14 18:59:04 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:48:56 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,13 @@ typedef struct s_mlx
 	long			F_color;
 	long			C_color;
 }t_mlx;
+
+typedef struct s_rgb_color
+{
+	int		r;
+	int		g;
+	int		b;
+}t_rgb_color;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 char	**memory_allocete(char *file_name);
