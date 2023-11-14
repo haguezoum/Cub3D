@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 13:27:03 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:04:12 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	main(int argc, char **argv)
 		
 		exit(0);
 	}
+	system("leaks cub3d");
 	mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 	mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);
 	mlx_hook(mlxx.mlx_win, 17, 0, exit_key, &mlxx);
