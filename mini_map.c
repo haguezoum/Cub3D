@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:22:45 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/14 15:35:35 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:42:54 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,11 @@ void	drow_mini_map(t_mlx	*mlxx)
 {
 	int	i;
 	int	j;
+	int z;
 
 	i = 0;
 	j = 0;
+	z = 1;
 	while (mlxx->map[i])
 	{
 		while (mlxx->map[i][j])
