@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:37:20 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/13 22:54:37 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 00:33:12 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,19 @@ int	check_map_name(char *map_name)
 
 int	check_path(t_mlx *mlxx)
 {
-	if (!mlxx->EA_path || !mlxx->SO_path || !mlxx->WE_path || !mlxx->NO_path)
+	if (!mlxx->ea_path || !mlxx->so_path || !mlxx->we_path || !mlxx->no_path)
 	{
 		return (-1);
 	}
-	if (extention(mlxx->EA_path) == -1 || extention(mlxx->SO_path) == -1 
-		|| extention(mlxx->WE_path) == -1 || extention(mlxx->NO_path) == -1)
+	if (extention(mlxx->ea_path) == -1 || extention(mlxx->so_path) == -1 
+		|| extention(mlxx->we_path) == -1 || extention(mlxx->no_path) == -1)
 	{
 		return (-1);
 	}
-	if (open(mlxx->EA_path, O_RDONLY) == -1 
-		|| open(mlxx->SO_path, O_RDONLY) == -1
-		|| open(mlxx->WE_path, O_RDONLY) == -1 
-		|| open(mlxx->NO_path, O_RDONLY) == -1)
+	if (open(mlxx->ea_path, O_RDONLY) == -1 
+		|| open(mlxx->so_path, O_RDONLY) == -1
+		|| open(mlxx->we_path, O_RDONLY) == -1 
+		|| open(mlxx->no_path, O_RDONLY) == -1)
 	{
 		return (-1);
 	}

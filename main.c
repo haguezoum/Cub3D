@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/14 19:28:42 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 00:33:12 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	init_param(t_mlx *mlxx)
 	mlxx->img.img = mlx_new_image(mlxx->mlx, mlxx->w_weight, mlxx->w_height);
 	mlxx->img.addr = mlx_get_data_addr(mlxx->img.img, &mlxx->img.bits_per_pixel,
 			&mlxx->img.line_length, &mlxx->img.endian);
-	mlxx->color1 = load_color(mlxx, mlxx->NO_path);
-	mlxx->color2 = load_color(mlxx, mlxx->EA_path);
-	mlxx->color3 = load_color(mlxx, mlxx->WE_path);
-	mlxx->color4 = load_color(mlxx, mlxx->SO_path);
-	free(mlxx->NO_path);
-	free(mlxx->EA_path);
-	free(mlxx->WE_path);
-	free(mlxx->SO_path);
+	mlxx->color1 = load_color(mlxx, mlxx->no_path);
+	mlxx->color2 = load_color(mlxx, mlxx->ea_path);
+	mlxx->color3 = load_color(mlxx, mlxx->we_path);
+	mlxx->color4 = load_color(mlxx, mlxx->so_path);
+	free(mlxx->no_path);
+	free(mlxx->ea_path);
+	free(mlxx->we_path);
+	free(mlxx->so_path);
 }
 
 int	mouse_hook(int button, int x, int y, void *param)

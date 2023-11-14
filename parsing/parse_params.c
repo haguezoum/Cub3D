@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:38:30 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/14 19:26:29 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 00:33:42 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ int	check_comma(char *str)
 void	process_texture_line(char *line, t_mlx *mlxx, int *count)
 {
 	if (ft_strncmp("NO ", line, 3) == 0)
-		norm_dir_path(line, count, &mlxx->NO_path);
+		norm_dir_path(line, count, &mlxx->no_path);
 	else if (ft_strncmp("SO ", line, 3) == 0)
-		norm_dir_path(line, count, &mlxx->SO_path);
+		norm_dir_path(line, count, &mlxx->so_path);
 	else if (ft_strncmp("WE ", line, 3) == 0)
-		norm_dir_path(line, count, &mlxx->WE_path);
+		norm_dir_path(line, count, &mlxx->we_path);
 	else if (ft_strncmp("EA ", line, 3) == 0)
-		norm_dir_path(line, count, &mlxx->EA_path);
+		norm_dir_path(line, count, &mlxx->ea_path);
 	else if (ft_strncmp("C ", line, 2) == 0)
-		norm_color(line, count, &mlxx->C_color);
+		norm_color(line, count, &mlxx->c_color);
 	else if (ft_strncmp("F ", line, 2) == 0)
-		norm_color(line, count, &mlxx->F_color);
+		norm_color(line, count, &mlxx->f_color);
 	else if (ft_isalpha(line[0]))
 	{
 		printf("Error dee\n");
@@ -96,12 +96,12 @@ int	store_params(char **map, t_mlx *mlxx)
 		free(line);
 		i++;
 	}
-	if (mlxx->C_color != -1)
+	if (mlxx->c_color != -1)
 		c_count++;
-	if (mlxx->F_color != -1)
+	if (mlxx->f_color != -1)
 		f_count++;
-	if (c_count != 1 || f_count != 1 || mlxx->C_color <= 0 
-		|| mlxx->F_color <= 0)
+	if (c_count != 1 || f_count != 1 || mlxx->c_color <= 0 
+		|| mlxx->f_color <= 0)
 		return (-1);
 	return (count);
 }

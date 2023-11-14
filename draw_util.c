@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:22:41 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/13 10:40:46 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/15 00:33:42 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	draw_all(int i, t_mlx *mlxx, int tmp_wall_h)
 {
-	draw_line(i, 0, mlxx->C_color, mlxx);
-	draw_line(i, 1, mlxx->F_color, mlxx);
+	draw_line(i, 0, mlxx->c_color, mlxx);
+	draw_line(i, 1, mlxx->f_color, mlxx);
 	if (mlxx->color_select == 1)
 		draw_line_x(i, mlxx->color1, mlxx, tmp_wall_h);
 	if (mlxx->color_select == 2)
