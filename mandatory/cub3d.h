@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/15 10:55:21 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:21:50 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
-# include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
