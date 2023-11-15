@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:38:30 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/15 00:33:42 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:13:19 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,24 @@ char	*param(char *path, int *count)
 
 int	check_rgb_count(char **rgb)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	*rgb_line;
 
 	i = 0;
 	while (rgb[i])
 	{
+		j = 0;
+		rgb_line = ft_strtrim(rgb[i], " \n");
+		while (rgb_line[j])
+		{
+			if (ft_isdigit(rgb_line[j]) == 0)
+			{
+				return (-1);
+			}
+			j++;
+		}
+		free(rgb_line);
 		i++;
 	}
 	if (i != 3)
