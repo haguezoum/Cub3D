@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/15 12:39:31 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:33:15 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,20 @@ int	vurtual_move(int key, t_mlx *mlxx)
 	return (1);
 }
 
+void	free_texture(t_mlx *mlxx)
+{
+	free(mlxx->color1);
+	free(mlxx->color2);
+	free(mlxx->color3);
+	free(mlxx->color4);
+}
+
 int	exit_key(t_mlx *mlxx)
 {
 	mlx_destroy_image(mlxx->mlx, mlxx->img.img);
 	mlx_destroy_window(mlxx->mlx, mlxx->mlx_win);
 	free_double(mlxx->map);
+	free_texture(mlxx);
 	exit(0);
 	return (0);
 }
@@ -83,6 +92,7 @@ int	click_key(int key, t_mlx *mlxx)
 		mlx_destroy_image(mlxx->mlx, mlxx->img.img);
 		mlx_destroy_window(mlxx->mlx, mlxx->mlx_win);
 		free_double(mlxx->map);
+		free_texture(mlxx);
 		exit(0);
 	}
 	if (vurtual_move(key, mlxx) == 1)
