@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:07:58 by haguezou          #+#    #+#             */
-/*   Updated: 2022/10/22 12:09:00 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:12:59 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+
+#include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

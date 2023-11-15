@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 00:39:44 by haguezou          #+#    #+#             */
-/*   Updated: 2022/10/16 17:27:04 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:00:41 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

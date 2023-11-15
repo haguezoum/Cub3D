@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:50:49 by haguezou          #+#    #+#             */
-/*   Updated: 2022/10/07 12:51:22 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:54:27 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_bzero(void *string, size_t n)

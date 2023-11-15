@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 20:33:47 by haguezou          #+#    #+#             */
-/*   Updated: 2022/10/13 19:00:58 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:13:11 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+
+#include "libft.h"
 
 char	*ft_strnstr(const char *bigStr, const char *smlStr, size_t len)
 {

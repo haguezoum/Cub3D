@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 01:21:48 by haguezou          #+#    #+#             */
-/*   Updated: 2022/10/23 19:17:23 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:01:19 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+
+#include "libft.h"
 
 void	print_each_number(unsigned int num, int fd)
 {

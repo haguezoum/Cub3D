@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:13:59 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/05 21:41:06 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:12:46 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *string)
 	int	i;
 
 	i = 0;
-	if(!string)
+	if (!string)
 		return (0);
 	while (*string)
 	{
