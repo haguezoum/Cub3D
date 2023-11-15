@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/15 00:39:47 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:31:54 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
-# include "./libft/libft.h"
-# include "./gnl/get_next_line.h"
+# include "../libft/libft.h"
+# include "../gnl/get_next_line.h"
 # include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
