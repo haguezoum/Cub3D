@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/15 14:16:33 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:23:30 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,6 @@ void			norm_color(char *line, int *count, long *color);
 int				is_valid_char_inzero(char **map, int i, int j, int size);
 void			handle_rgb_error(t_rgb_color color, char *r_,
 					char *g_, char *b_);
+void			drow_mini_map(t_mlx	*mlxx);
 
 #endif
