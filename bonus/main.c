@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/15 12:52:38 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:51:13 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	player_int(t_mlx *mlxx)
 			if (mlxx->map[i][j] == 'S')
 				mlxx->angle = 270 * (M_PI / 180);
 			if (mlxx->map[i][j] == 'E')
-				mlxx->angle = 0 * (M_PI / 180);
-			if (mlxx->map[i][j] == 'W')
 				mlxx->angle = 180 * (M_PI / 180);
+			if (mlxx->map[i][j] == 'W')
+				mlxx->angle = 0 * (M_PI / 180);
 		}
 	}
 }
