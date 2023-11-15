@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:25:36 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/15 11:21:50 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:16:26 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,12 @@ typedef struct s_rgb_color
 }t_rgb_color;
 
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-char			**memory_allocete(char *file_name);
 void			draw_line(int p1_x, int x, int color, t_mlx *mlxx);
-int				check_new_line(char *str);
-char			**load_map(char *file_name);
 void			drow_player(t_mlx mlxx);
 int				drow(void *param);
 int				click_key(int key, t_mlx *mlxx);
 t_point			horizontal_ray(t_mlx *mlxx, double angle);
 t_point			vertical_ray(t_mlx *mlxx, double angle);
-void			drow_rays(t_mlx *mlxx, double angle, int color);
 void			scan(t_mlx *mlxx, double angle, int i);
 unsigned int	*load_color(t_mlx *mlx, char *path);
 void			draw_line_x(int x0, unsigned int *color, t_mlx *mlxx,
