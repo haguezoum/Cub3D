@@ -6,11 +6,11 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:09:54 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/07 16:46:32 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:17:04 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "get_next_line.h"
 
 char	*gnl_strjoin(char *s1, char *s2)
 {
@@ -72,7 +72,7 @@ char	*restof(char *s)
 	return (line);
 }
 
-char	*                                                                                  string(int fd, char *line)
+char	*string(int fd, char *line)
 {
 	char	*buff;
 	int		bytes;
