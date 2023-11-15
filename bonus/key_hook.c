@@ -6,7 +6,7 @@
 /*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:54 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/15 10:33:18 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:39:31 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	exit_key(t_mlx *mlxx)
 {
 	mlx_destroy_image(mlxx->mlx, mlxx->img.img);
 	mlx_destroy_window(mlxx->mlx, mlxx->mlx_win);
-	free(mlxx->map);
+	free_double(mlxx->map);
 	exit(0);
 	return (0);
 }
@@ -82,7 +82,7 @@ int	click_key(int key, t_mlx *mlxx)
 	{
 		mlx_destroy_image(mlxx->mlx, mlxx->img.img);
 		mlx_destroy_window(mlxx->mlx, mlxx->mlx_win);
-		free(mlxx->map);
+		free_double(mlxx->map);
 		exit(0);
 	}
 	if (vurtual_move(key, mlxx) == 1)
