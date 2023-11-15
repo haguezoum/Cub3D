@@ -6,7 +6,7 @@
 /*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:18:09 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/15 00:20:10 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:49:04 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ long	create_hexa(char *RGB)
 		free_double(rgb);
 		return (-1);
 	}
-	r_ = ft_strtrim(rgb[0], "\n");
-	g_ = ft_strtrim(rgb[1], "\n");
-	b_ = ft_strtrim(rgb[2], "\n");
+	r_ = ft_strtrim(rgb[0], " \n");
+	g_ = ft_strtrim(rgb[1], " \n");
+	b_ = ft_strtrim(rgb[2], " \n");
 	color.r = cube_atoi(r_);
 	color.g = cube_atoi(g_);
 	color.b = cube_atoi(b_);

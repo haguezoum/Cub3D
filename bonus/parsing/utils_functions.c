@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:37:20 by haguezou          #+#    #+#             */
-/*   Updated: 2023/11/15 10:34:40 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:42:24 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	cube_atoi(char *str)
 
 	res = 0;
 	i = 0;
+	if (ft_strlen(str) == 0)
+		return (-1);
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
