@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/15 00:33:12 by haguezou         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:52:00 by abdel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,6 @@ void	init_param(t_mlx *mlxx)
 	free(mlxx->so_path);
 }
 
-int	mouse_hook(int button, int x, int y, void *param)
-{
-	t_mlx	*mlxx;
-
-	mlxx = (t_mlx *)param;
-	(void)y;
-	(void)x;
-	if (button == 1)
-		mlxx->angle -= 0.1;
-	if (button == 2)
-		mlxx->angle += 0.1;
-	return (0);
-}
-
 void main_helper(t_mlx *mlxx, char *map_name)
 {
 	mlxx->map = cube3d_full_map(map_name, mlxx);
@@ -117,7 +103,6 @@ int	main(int argc, char **argv)
 		mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 		mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);
 		mlx_hook(mlxx.mlx_win, 17, 0, exit_key, &mlxx);
-		mlx_mouse_hook(mlxx.mlx_win, mouse_hook, &mlxx);
 		mlx_loop(mlxx.mlx);
 	}
 	else

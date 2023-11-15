@@ -6,7 +6,7 @@
 #    By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 18:10:05 by abdel-ou          #+#    #+#              #
-#    Updated: 2023/11/15 10:47:45 by abdel-ou         ###   ########.fr        #
+#    Updated: 2023/11/15 10:53:18 by abdel-ou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FRAEMWORKS = -L /usr/lib -lmlx -framework OpenGL -framework AppKit
 FLAGS= -ffast-math -Wall -Wextra -Werror #-fsanitize=address -g
 
 SRC=	./mandatory/main.c ./mandatory/drow_line.c \
-		./mandatory/draw.c ./mandatory/key_hook.c  ./mandatory/horizontal_rays.c ./mandatory/vertical_ray.c ./mandatory/mini_map.c \
+		./mandatory/draw.c ./mandatory/key_hook.c  ./mandatory/horizontal_rays.c ./mandatory/vertical_ray.c \
 		./mandatory/texture.c ./mandatory/draw_util.c\
 		./mandatory/parsing/check_inside_maps.c \
 	    ./mandatory/parsing/parse.c ./mandatory/parsing/new_parse.c \
