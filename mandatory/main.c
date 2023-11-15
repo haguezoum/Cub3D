@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abdel-ou <abdel-ou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haguezou <haguezou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:12:00 by abdel-ou          #+#    #+#             */
-/*   Updated: 2023/11/15 10:52:00 by abdel-ou         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:45:30 by haguezou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	init_param(t_mlx *mlxx)
 	free(mlxx->so_path);
 }
 
-void main_helper(t_mlx *mlxx, char *map_name)
+void	main_helper(t_mlx *mlxx, char *map_name)
 {
 	mlxx->map = cube3d_full_map(map_name, mlxx);
 	if (mlxx->map == NULL )
@@ -75,31 +75,19 @@ void main_helper(t_mlx *mlxx, char *map_name)
 		exit(1);
 	}
 }
+
 int	main(int argc, char **argv)
 {
 	t_mlx	mlxx;
 
 	if (argc == 2)
 	{
-		if(check_map_name(argv[1]) == 0)
+		if (check_map_name(argv[1]) == 0)
 		{
 			printf("Error\n map name !\n");
 			exit(1);
 		}
 		main_helper(&mlxx, argv[1]);
-		// mlxx.map = cube3d_full_map(argv[1], &mlxx);
-		// // -----------------------
-		// if (mlxx.map == NULL )
-		// 	exit(1);
-		// init_param (&mlxx);
-		// if (!mlxx.color1 || !mlxx.color2 || !mlxx.color3 || !mlxx.color4)
-		// {
-		// 	printf("Error mlx imag\n");
-		// 	free_double(mlxx.map);
-		// 	exit(1);
-		// }
-	// -----------------------
-		system("leaks cub3d");
 		mlx_loop_hook(mlxx.mlx, &drow, &mlxx);
 		mlx_hook(mlxx.mlx_win, 2, 0, click_key, &mlxx);
 		mlx_hook(mlxx.mlx_win, 17, 0, exit_key, &mlxx);
@@ -110,6 +98,5 @@ int	main(int argc, char **argv)
 		printf("Error\n tow arguments !\n");
 		exit(1);
 	}
-	
 	return (0);
 }
