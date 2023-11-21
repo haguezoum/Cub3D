@@ -1,3 +1,3 @@
-#CUB3D
+# CUB3D
 
 ![Preview](./prev.gif)
